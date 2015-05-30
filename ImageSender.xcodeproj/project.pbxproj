@@ -10,11 +10,15 @@
 		194CC94C1B18E82600FFBE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC94B1B18E82600FFBE80 /* main.m */; };
 		194CC94F1B18E82600FFBE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC94E1B18E82600FFBE80 /* AppDelegate.m */; };
 		194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9501B18E82600FFBE80 /* ImageSender.xcdatamodeld */; };
-		194CC9551B18E82600FFBE80 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9541B18E82600FFBE80 /* ViewController.m */; };
+		194CC9551B18E82600FFBE80 /* ASLoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9541B18E82600FFBE80 /* ASLoadingScreenViewController.m */; };
 		194CC9581B18E82600FFBE80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194CC9561B18E82600FFBE80 /* Main.storyboard */; };
 		194CC95A1B18E82600FFBE80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194CC9591B18E82600FFBE80 /* Images.xcassets */; };
 		194CC95D1B18E82600FFBE80 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 194CC95B1B18E82600FFBE80 /* LaunchScreen.xib */; };
 		194CC9691B18E82600FFBE80 /* ImageSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9681B18E82600FFBE80 /* ImageSenderTests.m */; };
+		195A6CF31B19710300D0254F /* ASDraftsAndMesagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */; };
+		195A6CF61B1971C800D0254F /* ASShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CF51B1971C800D0254F /* ASShareViewController.m */; };
+		195A6CF91B1973B300D0254F /* ASMessageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */; };
+		195A6CFD1B19A49400D0254F /* ASMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CFC1B19A49400D0254F /* ASMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +38,22 @@
 		194CC94D1B18E82600FFBE80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		194CC94E1B18E82600FFBE80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		194CC9511B18E82600FFBE80 /* ImageSender.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageSender.xcdatamodel; sourceTree = "<group>"; };
-		194CC9531B18E82600FFBE80 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		194CC9541B18E82600FFBE80 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		194CC9531B18E82600FFBE80 /* ASLoadingScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLoadingScreenViewController.h; sourceTree = "<group>"; };
+		194CC9541B18E82600FFBE80 /* ASLoadingScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASLoadingScreenViewController.m; sourceTree = "<group>"; };
 		194CC9571B18E82600FFBE80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		194CC9591B18E82600FFBE80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		194CC95C1B18E82600FFBE80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		194CC9621B18E82600FFBE80 /* ImageSenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageSenderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		194CC9671B18E82600FFBE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		194CC9681B18E82600FFBE80 /* ImageSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageSenderTests.m; sourceTree = "<group>"; };
+		195A6CF11B19710300D0254F /* ASDraftsAndMesagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDraftsAndMesagesViewController.h; sourceTree = "<group>"; };
+		195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDraftsAndMesagesViewController.m; sourceTree = "<group>"; };
+		195A6CF41B1971C800D0254F /* ASShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASShareViewController.h; sourceTree = "<group>"; };
+		195A6CF51B1971C800D0254F /* ASShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASShareViewController.m; sourceTree = "<group>"; };
+		195A6CF71B1973B300D0254F /* ASMessageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMessageInfoCell.h; sourceTree = "<group>"; };
+		195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMessageInfoCell.m; sourceTree = "<group>"; };
+		195A6CFB1B19A49400D0254F /* ASMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMessage.h; sourceTree = "<group>"; };
+		195A6CFC1B19A49400D0254F /* ASMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +97,14 @@
 			children = (
 				194CC94D1B18E82600FFBE80 /* AppDelegate.h */,
 				194CC94E1B18E82600FFBE80 /* AppDelegate.m */,
-				194CC9531B18E82600FFBE80 /* ViewController.h */,
-				194CC9541B18E82600FFBE80 /* ViewController.m */,
+				194CC9531B18E82600FFBE80 /* ASLoadingScreenViewController.h */,
+				194CC9541B18E82600FFBE80 /* ASLoadingScreenViewController.m */,
+				195A6CF11B19710300D0254F /* ASDraftsAndMesagesViewController.h */,
+				195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */,
+				195A6CF41B1971C800D0254F /* ASShareViewController.h */,
+				195A6CF51B1971C800D0254F /* ASShareViewController.m */,
+				195A6CFA1B198B1200D0254F /* CustomMessageCell */,
+				195A6CF01B196EF500D0254F /* Model */,
 				194CC9561B18E82600FFBE80 /* Main.storyboard */,
 				194CC9591B18E82600FFBE80 /* Images.xcassets */,
 				194CC95B1B18E82600FFBE80 /* LaunchScreen.xib */,
@@ -120,6 +138,24 @@
 				194CC9671B18E82600FFBE80 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		195A6CF01B196EF500D0254F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				195A6CFB1B19A49400D0254F /* ASMessage.h */,
+				195A6CFC1B19A49400D0254F /* ASMessage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		195A6CFA1B198B1200D0254F /* CustomMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				195A6CF71B1973B300D0254F /* ASMessageInfoCell.h */,
+				195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */,
+			);
+			name = CustomMessageCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,8 +260,12 @@
 			files = (
 				194CC94F1B18E82600FFBE80 /* AppDelegate.m in Sources */,
 				194CC94C1B18E82600FFBE80 /* main.m in Sources */,
-				194CC9551B18E82600FFBE80 /* ViewController.m in Sources */,
+				194CC9551B18E82600FFBE80 /* ASLoadingScreenViewController.m in Sources */,
+				195A6CF91B1973B300D0254F /* ASMessageInfoCell.m in Sources */,
+				195A6CF61B1971C800D0254F /* ASShareViewController.m in Sources */,
+				195A6CF31B19710300D0254F /* ASDraftsAndMesagesViewController.m in Sources */,
 				194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */,
+				195A6CFD1B19A49400D0254F /* ASMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +462,7 @@
 				194CC96E1B18E82600FFBE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		194CC96F1B18E82600FFBE80 /* Build configuration list for PBXNativeTarget "ImageSenderTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +471,7 @@
 				194CC9711B18E82600FFBE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
