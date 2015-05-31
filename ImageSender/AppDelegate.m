@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self customAppearance];
     return YES;
 }
 
@@ -122,6 +123,12 @@
             abort();
         }
     }
+}
+
+
+- (void) customAppearance {
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 @end

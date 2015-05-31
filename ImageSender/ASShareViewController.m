@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UITextField  *subjectsField;
 @property (weak, nonatomic) IBOutlet UITextView   *bodyTextView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView  *imagePhotoView;
 
 @end
 
@@ -30,13 +29,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-#warning add button mode
-    //self.addPhotoButton.contentMode
+
+    self.addPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
+    
     self.navigationItem.title = @"Share";
     
     [self registerForKeyboardNotifications];
     
     
+//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"BackButton.png"];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
     AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
     self.managedObjectContext = delegate.managedObjectContext;
     
@@ -45,7 +51,7 @@
         self.emailField.text = self.message.email;
         self.subjectsField.text = self.message.subject;
         self.bodyTextView.text = self.message.body;
-        self.imagePhotoView.image = [UIImage imageWithData:self.message.image];
+        self.addPhotoButton.imageView.image = [UIImage imageWithData:self.message.image];
         self.addPhotoButton.hidden = YES;
     }
 
@@ -55,6 +61,11 @@
 - (void) dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 
@@ -216,13 +227,16 @@
         
         mailCompose.delegate = self;
         
-#warning ToRecipients не срабатывает в MailComposeControllere пусто.
         [mailCompose setToRecipients:@[self.emailField.text]];
         [mailCompose setSubject:self.subjectsField.text];
         [mailCompose setMessageBody:self.bodyTextView.text isHTML:NO];
-        NSData *data = [NSData dataWithData:UIImagePNGRepresentation(self.imagePhotoView.image)];
-        [mailCompose addAttachmentData:data mimeType:@"image" fileName:@"image.png"];
-        [mailCompose setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        
+        UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoNew.png"];
+        if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
+            NSData *data = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
+            [mailCompose addAttachmentData:data mimeType:@"image/png" fileName:@"MyImage.png"];
+        }
+        
         [self presentViewController:mailCompose animated:YES completion:nil];
    
 #warning Нужна ли блок кода ниже или оставить просто с if без else?
@@ -245,15 +259,27 @@
     
     if (result == MFMailComposeResultSent) {
         ASMessage *message = [NSEntityDescription insertNewObjectForEntityForName:@"ASMessage" inManagedObjectContext:self.managedObjectContext];
-        message.email = self.emailField.text;
+        message.email   = self.emailField.text;
         message.subject = self.subjectsField.text;
-        message.body = self.bodyTextView.text;
-        //message.image =
+        message.body    = self.bodyTextView.text;
+        message.image   = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
         [self.managedObjectContext save:nil];
 #warning Как правильно записать обнуление строки?
-        self.emailField.text = nil; //либо нужно так: = @"";  ?
+        self.emailField.text    = nil; //либо нужно так: = @"";  ?
         self.subjectsField.text = nil;
-        self.bodyTextView.text = nil;
+        self.bodyTextView.text  = nil;
+        [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoNew.png"]forState:UIControlStateNormal];
+        self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
+
+        
+    }else if (result == MFMailComposeResultCancelled || result == MFMailComposeResultSaved) {
+
+        self.emailField.text    = nil; //либо нужно так: = @"";  ?
+        self.subjectsField.text = nil;
+        self.bodyTextView.text  = nil;
+        [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoNew.png"]forState:UIControlStateNormal];
+        self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
+
     }
     
 #warning Что сделать с остальными проверками result? Ведь в сдучае,если почта отправенна не была мы дожны все оставить как есть?
@@ -304,8 +330,8 @@
     
     NSData *dataImage = UIImagePNGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"]);
     UIImage *img = [[UIImage alloc]initWithData:dataImage];
-    self.imagePhotoView.image = img;
-    
+    [self.addPhotoButton setBackgroundImage:img forState:UIControlStateNormal];
+    self.addPhotoButton.titleLabel.layer.opacity = 0.0f;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

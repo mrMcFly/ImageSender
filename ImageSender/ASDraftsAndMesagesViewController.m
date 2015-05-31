@@ -29,8 +29,20 @@
     
     self.navigationItem.title = @"Drafts and sent messages";
     
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddNewMessage)];
+//    addButton.image = [UIImage imageNamed:@"AddMessage.png"];
+//    
+//    self.navigationItem.rightBarButtonItem = addButton;
+    
+    
+    [addButton setBackgroundImage:[UIImage imageNamed:@"AddMessage.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+   
     self.navigationItem.rightBarButtonItem = addButton;
+
     
     
     
@@ -46,6 +58,8 @@
 #warning Праильно ли так избавляться от разделителя в ячейках (выставил,чтобы их не было видно)!?
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
 
+    self.tableView.opaque = YES;
+    
 }
 
 
@@ -59,6 +73,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 
@@ -121,6 +140,7 @@
     static NSString *cellIdentifier = @"ASMessageInfoCell";
     
     ASMessageInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     ASMessage *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell addInfoFromMessage:message];
     
@@ -136,7 +156,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSLog(@"Select");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     ASShareViewController *shareVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ASShareViewController"];
