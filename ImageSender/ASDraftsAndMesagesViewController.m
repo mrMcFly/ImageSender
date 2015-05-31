@@ -30,14 +30,9 @@
     self.navigationItem.title = @"Drafts and sent messages";
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddNewMessage)];
-//    addButton.image = [UIImage imageNamed:@"AddMessage.png"];
-//    
-//    self.navigationItem.rightBarButtonItem = addButton;
-    
-    
+
     [addButton setBackgroundImage:[UIImage imageNamed:@"AddMessage.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
    
@@ -55,7 +50,6 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
 
-#warning Праильно ли так избавляться от разделителя в ячейках (выставил,чтобы их не было видно)!?
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
 
     self.tableView.opaque = YES;
@@ -92,7 +86,6 @@
 
 - (IBAction)actionRemoveAll:(UIButton*)sender {
     
-#warning правльно ли делать эту месседж-строку статической?
     static NSString *alertMessage = @"Are you sure you want to remove all messages?";
     
     UIAlertController *removeAlertContrl = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
@@ -102,8 +95,7 @@
     }];
     
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-#warning Delete ALL messages
-        //Work with tableView and ASMessage
+
         NSArray *array = self.fetchedResultsController.fetchedObjects;
         for (NSManagedObject *managedObject in array) {
             [self.managedObjectContext deleteObject:managedObject];
@@ -128,7 +120,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-#warning Возможно тут заменить на ASMessage?
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
     return [sectionInfo numberOfObjects];
 }
@@ -195,5 +186,6 @@
         [self presentViewController:removeAlertContrl animated:YES completion:nil];
     }
 }
+
 
 @end

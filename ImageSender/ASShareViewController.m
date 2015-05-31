@@ -36,18 +36,12 @@
     
     [self registerForKeyboardNotifications];
     
-    
-//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"BackButton.png"];
-    
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 
     AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
     self.managedObjectContext = delegate.managedObjectContext;
     
     if (self.message) {
-        //тут мне нужно как-то ставить изображение
         self.emailField.text = self.message.email;
         self.subjectsField.text = self.message.subject;
         self.bodyTextView.text = self.message.body;
@@ -65,6 +59,7 @@
 
 
 - (BOOL)prefersStatusBarHidden {
+    
     return YES;
 }
 
@@ -104,7 +99,7 @@
 - (void) handleCamera {
     
 #if TARGET_IPHONE_SIMULATOR
-    //camera is not available on simulator.
+    
     self.alertController =
     [UIAlertController alertControllerWithTitle: @"Error"
                                         message:@"Camera is not available on the simulator"
@@ -122,7 +117,6 @@
     [self presentViewController:self.alertController animated:YES completion:nil];
     
 #elif TARGET_OS_IPHONE
-    //some code for iPhone
     
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -138,7 +132,6 @@
     
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-#warning не нравится,что делегат устанавливается два раза (см. метод выше).+ каждый раз создается экземпляр UIImagePickerController, может через SINGLETON реализовать?
     self.imagePicker.delegate = self;
     
     [self presentViewController:self.imagePicker animated:YES completion:nil];
@@ -168,8 +161,6 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, kbSize.height , 0.0f);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
-#warning что-то нужно с offsetom делавть, нужна реализация с автоматическим поднятием или опусканием contenta scrollView.
-    //self.scrollView.contentOffset = CGPointMake(0, kbSize);
 }
 
 
@@ -208,6 +199,14 @@
 }
 
 
+- (void) cleanFields {
+    self.emailField.text    = nil;
+    self.subjectsField.text = nil;
+    self.bodyTextView.text  = nil;
+    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoNew.png"]forState:UIControlStateNormal];
+    self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
+}
+
 
 #pragma mark - Actions
 
@@ -239,7 +238,6 @@
         
         [self presentViewController:mailCompose animated:YES completion:nil];
    
-#warning Нужна ли блок кода ниже или оставить просто с if без else?
     }else {
         self.alertController = [UIAlertController alertControllerWithTitle:nil message:@"Sorry,but your device does not support email dispatch." preferredStyle:UIAlertControllerStyleAlert];
         
@@ -262,30 +260,25 @@
         message.email   = self.emailField.text;
         message.subject = self.subjectsField.text;
         message.body    = self.bodyTextView.text;
-        message.image   = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
-        [self.managedObjectContext save:nil];
-#warning Как правильно записать обнуление строки?
-        self.emailField.text    = nil; //либо нужно так: = @"";  ?
-        self.subjectsField.text = nil;
-        self.bodyTextView.text  = nil;
-        [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoNew.png"]forState:UIControlStateNormal];
-        self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
-
         
+        UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoNew.png"];
+        if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
+            message.image = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
+        }else{
+            message.image = nil;
+        }
+        
+        [self.managedObjectContext save:nil];
+        
+        [self cleanFields];
     }else if (result == MFMailComposeResultCancelled || result == MFMailComposeResultSaved) {
-
-        self.emailField.text    = nil; //либо нужно так: = @"";  ?
-        self.subjectsField.text = nil;
-        self.bodyTextView.text  = nil;
-        [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoNew.png"]forState:UIControlStateNormal];
-        self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
-
+        
+        [self cleanFields];
     }
-    
-#warning Что сделать с остальными проверками result? Ведь в сдучае,если почта отправенна не была мы дожны все оставить как есть?
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 #pragma mark - UITextFieldDelegate
@@ -334,12 +327,5 @@
     self.addPhotoButton.titleLabel.layer.opacity = 0.0f;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-
-
-
-
-
 
 @end

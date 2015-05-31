@@ -138,8 +138,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="yRn-UN-bcP" id="EhR-6R-TZ9"/>
-                                    <outlet property="delegate" destination="yRn-UN-bcP" id="0Xn-KQ-Iw1"/>
+                                    <outlet property="dataSource" destination="yRn-UN-bcP" id="1Rl-BX-Qw5"/>
+                                    <outlet property="delegate" destination="yRn-UN-bcP" id="TPV-0T-KYZ"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy0-39-bLl" userLabel="RemoveAll Button ">
