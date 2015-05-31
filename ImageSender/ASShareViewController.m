@@ -24,11 +24,11 @@
 
 @end
 
+
 @implementation ASShareViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
     self.addPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -45,10 +45,10 @@
         self.emailField.text = self.message.email;
         self.subjectsField.text = self.message.subject;
         self.bodyTextView.text = self.message.body;
-        self.addPhotoButton.imageView.image = [UIImage imageWithData:self.message.image];
+        UIImage *messageImage = [UIImage imageWithData:self.message.image];
+        [self.addPhotoButton setBackgroundImage:messageImage forState:UIControlStateNormal];
         self.addPhotoButton.hidden = YES;
     }
-
 }
 
 
@@ -89,7 +89,6 @@
                            handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    
     [self.alertController addAction:cameraAction];
     [self.alertController addAction:imageGalleryAction];
     [self.alertController addAction:cancelAction];
@@ -111,13 +110,9 @@
                            handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    
     [self.alertController addAction:okAction];
-    
     [self presentViewController:self.alertController animated:YES completion:nil];
-    
 #elif TARGET_OS_IPHONE
-    
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.imagePicker.delegate = self;
@@ -173,29 +168,12 @@
 }
 
 
-#warning Нихрена не печатается в валидации почты!!!
-- (BOOL)validateEmailWithString:(NSString*)email
+- (BOOL)isValidEmailAdress:(NSString*) emailAdress
 {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     
-    if ([emailTest evaluateWithObject:email] == NO) {
-        self.alertController =
-        [UIAlertController alertControllerWithTitle:@"Email warning"
-                                            message:@"You enter not valid email"
-                                     preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction =
-        [UIAlertAction actionWithTitle:@"Ok"
-                                 style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [self.alertController addAction:okAction];
-        [self presentViewController:self.alertController animated:YES completion:nil];
-    }
-    
-    return [emailTest evaluateWithObject:email];
+    return [emailTest evaluateWithObject:emailAdress];
 }
 
 
@@ -220,33 +198,54 @@
 
 - (IBAction)actionShareByEmail:(UIButton*)sender {
     
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc]init];
-        mailCompose.mailComposeDelegate = self;
-        
-        mailCompose.delegate = self;
-        
-        [mailCompose setToRecipients:@[self.emailField.text]];
-        [mailCompose setSubject:self.subjectsField.text];
-        [mailCompose setMessageBody:self.bodyTextView.text isHTML:NO];
-        
-        UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoNew.png"];
-        if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
-            NSData *data = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
-            [mailCompose addAttachmentData:data mimeType:@"image/png" fileName:@"MyImage.png"];
+    if ([self isValidEmailAdress:self.emailField.text]) {
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc]init];
+            mailCompose.mailComposeDelegate = self;
+            
+            mailCompose.delegate = self;
+            
+            [mailCompose setToRecipients:@[self.emailField.text]];
+            [mailCompose setSubject:self.subjectsField.text];
+            [mailCompose setMessageBody:self.bodyTextView.text isHTML:NO];
+            
+            UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoNew.png"];
+            if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
+                NSData *data = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
+                [mailCompose addAttachmentData:data mimeType:@"image/png" fileName:@"MyImage.png"];
+            }
+            
+            [self presentViewController:mailCompose animated:YES completion:nil];
+            
+        }else {
+            self.alertController = [UIAlertController alertControllerWithTitle:nil message:@"Sorry,but your device does not support email dispatch." preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction =
+            [UIAlertAction actionWithTitle:@"Ok"
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [self.alertController addAction:okAction];
+            [self presentViewController:self.alertController animated:YES
+                             completion:nil];
         }
+    }else{
+        self.alertController =
+        [UIAlertController alertControllerWithTitle:@"Email warning"
+                                            message:@"You enter not valid email"
+                                     preferredStyle:UIAlertControllerStyleAlert];
         
-        [self presentViewController:mailCompose animated:YES completion:nil];
-   
-    }else {
-        self.alertController = [UIAlertController alertControllerWithTitle:nil message:@"Sorry,but your device does not support email dispatch." preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
+        UIAlertAction *okAction =
+        [UIAlertAction actionWithTitle:@"Ok"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {
+                                   [self dismissViewControllerAnimated:YES completion:nil];
+                               }];
         [self.alertController addAction:okAction];
-        [self presentViewController:self.alertController animated:YES
-                         completion:nil];
+        [self.emailField becomeFirstResponder];
+        
+        [self presentViewController:self.alertController animated:YES completion:nil];
     }
 }
 
@@ -297,9 +296,6 @@
     
     BOOL shouldRaplace = true;
     
-//    if ([textField isEqual:self.emailField]){
-//        shouldRaplace = [self validateEmailWithString:string];
-//    }
     return shouldRaplace;
 }
 
@@ -309,10 +305,8 @@
     
     if ([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
-        //Return FALSE so that the final '\n' character doesn't get added.
         return NO;
     }
-    //For any other character return TRUE so that the text gets added to the view
     return YES;
 }
 

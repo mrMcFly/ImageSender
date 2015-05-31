@@ -74,7 +74,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
                                 <color key="backgroundColor" red="0.20784313725490194" green="0.25490196078431371" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="ASMessageInfoCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASMessageInfoCell" rowHeight="85" id="1Dg-q1-RaQ" customClass="ASMessageInfoCell">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="ASMessageInfoCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASMessageInfoCell" rowHeight="85" id="1Dg-q1-RaQ" customClass="ASMessageInfoCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Dg-q1-RaQ" id="JZF-lh-SiT">

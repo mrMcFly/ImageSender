@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.navigationItem.title = @"Drafts and sent messages";
     
@@ -35,12 +34,8 @@
 
     [addButton setBackgroundImage:[UIImage imageNamed:@"AddMessage.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
-   
     self.navigationItem.rightBarButtonItem = addButton;
 
-    
-    
-    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.managedObjectContext= delegate.managedObjectContext;
     
@@ -147,7 +142,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Select");
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     ASShareViewController *shareVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ASShareViewController"];

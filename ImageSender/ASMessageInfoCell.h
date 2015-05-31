@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImg;
 
-#warning Расстояния между символами играют значение!?
 -(void)addInfoFromMessage:(ASMessage*)message;
 
 @end
