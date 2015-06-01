@@ -198,23 +198,19 @@
                                                     <constraint firstAttribute="width" constant="130" id="Mv3-cx-0h2"/>
                                                     <constraint firstAttribute="height" constant="130" id="Xjf-uf-RfZ"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <inset key="contentEdgeInsets" minX="0.0" minY="82" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Add photo" backgroundImage="AddPhotoNew">
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="77" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Add photo" backgroundImage="AddPhotoButton">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="actionAddPhoto:" destination="UxB-IJ-6fr" eventType="touchUpInside" id="RMO-cU-DZz"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-qK-fvx" userLabel="E-mail Label">
-                                                <rect key="frame" x="20" y="160" width="49" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="20" y="162" width="43.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -235,14 +231,14 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subjects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nf-gX-8P6" userLabel="Subjects Label">
-                                                <rect key="frame" x="20" y="235" width="67" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="20" y="235" width="60" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqw-23-7OS">
-                                                <rect key="frame" x="20" y="310" width="41" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="20" y="310" width="36" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -268,30 +264,28 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.20784313725490194" green="0.25490196078431371" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Dqw-23-7OS" firstAttribute="top" secondItem="bKE-VK-pZt" secondAttribute="bottom" constant="17" id="33N-sz-YcG"/>
+                                            <constraint firstItem="3Nf-gX-8P6" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" id="APF-qp-PS4"/>
                                             <constraint firstItem="HtT-mt-VJa" firstAttribute="top" secondItem="XHD-4r-ttz" secondAttribute="bottom" constant="17" id="F79-OC-8nc"/>
-                                            <constraint firstItem="XHD-4r-ttz" firstAttribute="leading" secondItem="Dqw-23-7OS" secondAttribute="trailing" constant="-40.5" id="MnY-Vn-K8T"/>
+                                            <constraint firstItem="3Nf-gX-8P6" firstAttribute="top" secondItem="6Na-2y-RlZ" secondAttribute="bottom" constant="16" id="L4h-dg-HlU"/>
+                                            <constraint firstItem="6Na-2y-RlZ" firstAttribute="top" secondItem="7Th-qK-fvx" secondAttribute="bottom" constant="8.5" id="Pfw-n2-YHd"/>
                                             <constraint firstAttribute="bottom" secondItem="XHD-4r-ttz" secondAttribute="bottom" constant="75" id="RhX-fT-c9y"/>
                                             <constraint firstItem="6Na-2y-RlZ" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" symbolic="YES" id="Rsz-5B-Op6"/>
-                                            <constraint firstItem="6Na-2y-RlZ" firstAttribute="top" secondItem="7Th-qK-fvx" secondAttribute="bottom" constant="8.5" id="TFk-QB-mS0"/>
                                             <constraint firstAttribute="trailing" secondItem="bKE-VK-pZt" secondAttribute="trailing" constant="20" symbolic="YES" id="UWO-rc-trE"/>
-                                            <constraint firstItem="3Nf-gX-8P6" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" symbolic="YES" id="XJk-mH-ZET"/>
-                                            <constraint firstItem="bKE-VK-pZt" firstAttribute="top" secondItem="3Nf-gX-8P6" secondAttribute="bottom" constant="7.5" id="Yq7-Hy-2YN"/>
                                             <constraint firstAttribute="bottom" secondItem="HtT-mt-VJa" secondAttribute="bottom" constant="20" id="Zuv-Gy-JUX"/>
                                             <constraint firstItem="HtT-mt-VJa" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" id="aRU-Gj-3ea"/>
                                             <constraint firstAttribute="trailing" secondItem="6Na-2y-RlZ" secondAttribute="trailing" constant="20" symbolic="YES" id="aU2-T0-gz2"/>
-                                            <constraint firstItem="3Nf-gX-8P6" firstAttribute="top" secondItem="6Na-2y-RlZ" secondAttribute="bottom" constant="16" id="bX3-K0-GkW"/>
                                             <constraint firstItem="XHD-4r-ttz" firstAttribute="top" secondItem="AOy-9v-AzV" secondAttribute="top" constant="338" id="bao-hO-5SN"/>
-                                            <constraint firstItem="7Th-qK-fvx" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" symbolic="YES" id="dRj-xD-jgl"/>
                                             <constraint firstItem="WAn-6e-wdN" firstAttribute="top" secondItem="AOy-9v-AzV" secondAttribute="top" constant="19" id="fSe-US-clb"/>
-                                            <constraint firstItem="WAn-6e-wdN" firstAttribute="bottom" secondItem="7Th-qK-fvx" secondAttribute="bottom" constant="-31.5" id="fVl-L3-uEc"/>
                                             <constraint firstItem="bKE-VK-pZt" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" symbolic="YES" id="fdP-1t-Wb9"/>
                                             <constraint firstAttribute="trailing" secondItem="HtT-mt-VJa" secondAttribute="trailing" constant="20" id="fvd-Nd-ouz"/>
-                                            <constraint firstItem="XHD-4r-ttz" firstAttribute="top" secondItem="Dqw-23-7OS" secondAttribute="bottom" constant="7" id="fxe-O3-SZy"/>
+                                            <constraint firstItem="bKE-VK-pZt" firstAttribute="top" secondItem="3Nf-gX-8P6" secondAttribute="bottom" constant="10" id="h6w-NV-A3c"/>
                                             <constraint firstAttribute="trailing" secondItem="XHD-4r-ttz" secondAttribute="trailing" constant="20" id="hYh-bP-5RF"/>
-                                            <constraint firstItem="Dqw-23-7OS" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" symbolic="YES" id="ibj-3J-fd0"/>
+                                            <constraint firstItem="Dqw-23-7OS" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" id="kZz-23-AWB"/>
+                                            <constraint firstItem="Dqw-23-7OS" firstAttribute="top" secondItem="bKE-VK-pZt" secondAttribute="bottom" constant="17" id="m87-LK-GW6"/>
+                                            <constraint firstItem="7Th-qK-fvx" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" id="nGo-or-8bU"/>
                                             <constraint firstItem="XHD-4r-ttz" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" id="sGi-5T-usH"/>
                                             <constraint firstAttribute="centerX" secondItem="WAn-6e-wdN" secondAttribute="centerX" id="zm0-0W-unJ"/>
+                                            <constraint firstItem="7Th-qK-fvx" firstAttribute="bottom" secondItem="WAn-6e-wdN" secondAttribute="bottom" constant="31.5" id="zwC-i0-0eC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -330,7 +324,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddPhotoNew" width="170" height="170"/>
+        <image name="AddPhotoButton" width="77" height="77"/>
         <image name="LoadingScreen" width="640" height="960"/>
         <image name="RemoveAllButton" width="201" height="16"/>
         <image name="share" width="203" height="18"/>

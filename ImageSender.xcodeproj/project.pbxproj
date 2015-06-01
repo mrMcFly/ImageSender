@@ -103,7 +103,7 @@
 				195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */,
 				195A6CF41B1971C800D0254F /* ASShareViewController.h */,
 				195A6CF51B1971C800D0254F /* ASShareViewController.m */,
-				195A6CFA1B198B1200D0254F /* CustomMessageCell */,
+				195A6CFA1B198B1200D0254F /* Cell Custom */,
 				195A6CF01B196EF500D0254F /* Model */,
 				194CC9561B18E82600FFBE80 /* Main.storyboard */,
 				194CC9591B18E82600FFBE80 /* Images.xcassets */,
@@ -149,13 +149,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		195A6CFA1B198B1200D0254F /* CustomMessageCell */ = {
+		195A6CFA1B198B1200D0254F /* Cell Custom */ = {
 			isa = PBXGroup;
 			children = (
 				195A6CF71B1973B300D0254F /* ASMessageInfoCell.h */,
 				195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */,
 			);
-			name = CustomMessageCell;
+			name = "Cell Custom";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

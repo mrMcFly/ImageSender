@@ -22,33 +22,31 @@
 @property (weak, nonatomic) IBOutlet UITextView   *bodyTextView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (assign, nonatomic) BOOL isReturnFromValidationEmailError;
+
 @end
 
-
+//AddPhotoButton
 @implementation ASShareViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.addPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
     
     self.navigationItem.title = @"Share";
     
-    [self registerForKeyboardNotifications];
-    
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-
-    AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
-    self.managedObjectContext = delegate.managedObjectContext;
     
-    if (self.message) {
-        self.emailField.text = self.message.email;
-        self.subjectsField.text = self.message.subject;
-        self.bodyTextView.text = self.message.body;
-        UIImage *messageImage = [UIImage imageWithData:self.message.image];
-        [self.addPhotoButton setBackgroundImage:messageImage forState:UIControlStateNormal];
-        self.addPhotoButton.hidden = YES;
-    }
+    [self registerForKeyboardNotifications];
+
+    [self coreDataStartSettings];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    self.isReturnFromValidationEmailError = NO;
 }
 
 
@@ -65,6 +63,33 @@
 
 
 #pragma mark - Additional
+
+- (void) coreDataStartSettings {
+    
+    AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    self.managedObjectContext = delegate.managedObjectContext;
+    
+    if (self.message) {
+        
+        self.emailField.text = self.message.email;
+        self.subjectsField.text = self.message.subject;
+        self.bodyTextView.text = self.message.body;
+       
+        UIImage *messageImage = nil;
+        
+        if (self.message.image) {
+        
+            messageImage = [[UIImage alloc]initWithData:self.message.image];
+            self.addPhotoButton.titleLabel.layer.opacity = 0.0f;
+        }else {
+            
+            messageImage = [UIImage imageNamed:@"AddPhotoButton.png"];
+        }
+        [self.addPhotoButton setBackgroundImage:messageImage forState:UIControlStateNormal];
+    }
+}
+
+
 - (void)setupAlertCtrl {
     
     self.alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -103,7 +128,6 @@
     [UIAlertController alertControllerWithTitle: @"Error"
                                         message:@"Camera is not available on the simulator"
                                  preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *okAction =
     [UIAlertAction actionWithTitle:@"Ok"
                              style:UIAlertActionStyleDefault
@@ -118,7 +142,6 @@
     self.imagePicker.delegate = self;
     
     [self presentViewController:self.imagePicker animated:YES completion:nil];
-    
 #endif
 }
 
@@ -177,11 +200,11 @@
 }
 
 
-- (void) cleanFields {
+- (void) cleanAllFields {
     self.emailField.text    = nil;
     self.subjectsField.text = nil;
     self.bodyTextView.text  = nil;
-    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoNew.png"]forState:UIControlStateNormal];
+    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:  @"AddPhotoButton.png"]forState:UIControlStateNormal];
     self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
 }
 
@@ -198,43 +221,51 @@
 
 - (IBAction)actionShareByEmail:(UIButton*)sender {
     
-    if ([self isValidEmailAdress:self.emailField.text]) {
-        if ([MFMailComposeViewController canSendMail]) {
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        if ([self isValidEmailAdress:self.emailField.text]) {
+            
             MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc]init];
             mailCompose.mailComposeDelegate = self;
-            
             mailCompose.delegate = self;
             
             [mailCompose setToRecipients:@[self.emailField.text]];
             [mailCompose setSubject:self.subjectsField.text];
             [mailCompose setMessageBody:self.bodyTextView.text isHTML:NO];
             
-            UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoNew.png"];
+            UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoButton.png"];
+  
+            //Define attach or not (image can be default for button) image to email message.
             if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
+                
                 NSData *data = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
                 [mailCompose addAttachmentData:data mimeType:@"image/png" fileName:@"MyImage.png"];
             }
             
             [self presentViewController:mailCompose animated:YES completion:nil];
             
-        }else {
-            self.alertController = [UIAlertController alertControllerWithTitle:nil message:@"Sorry,but your device does not support email dispatch." preferredStyle:UIAlertControllerStyleAlert];
+        }else{
+            //...if email NOT valid
+            self.alertController =
+            [UIAlertController alertControllerWithTitle:@"Email warning"
+                                                message:@"You enter not valid email"
+                                         preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *okAction =
             [UIAlertAction actionWithTitle:@"Ok"
                                      style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
+                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                   }];
             [self.alertController addAction:okAction];
-            [self presentViewController:self.alertController animated:YES
-                             completion:nil];
+            self.isReturnFromValidationEmailError = YES;
+            [self.emailField becomeFirstResponder];
+            
+            [self presentViewController:self.alertController animated:YES completion:nil];
         }
     }else{
-        self.alertController =
-        [UIAlertController alertControllerWithTitle:@"Email warning"
-                                            message:@"You enter not valid email"
-                                     preferredStyle:UIAlertControllerStyleAlert];
+        //If device can't send email.
+        self.alertController = [UIAlertController alertControllerWithTitle:nil message:@"Sorry,but your device does not support email dispatch." preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction =
         [UIAlertAction actionWithTitle:@"Ok"
@@ -243,11 +274,11 @@
                                    [self dismissViewControllerAnimated:YES completion:nil];
                                }];
         [self.alertController addAction:okAction];
-        [self.emailField becomeFirstResponder];
-        
-        [self presentViewController:self.alertController animated:YES completion:nil];
+        [self presentViewController:self.alertController animated:YES
+                         completion:nil];
     }
 }
+
 
 
 #pragma mark - MFMailComposeViewControllerDelegate
@@ -260,31 +291,36 @@
         message.subject = self.subjectsField.text;
         message.body    = self.bodyTextView.text;
         
-        UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoNew.png"];
+        UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoButton.png"];
         if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
             message.image = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
         }else{
             message.image = nil;
         }
-        
         [self.managedObjectContext save:nil];
         
-        [self cleanFields];
+        [self cleanAllFields];
     }else if (result == MFMailComposeResultCancelled || result == MFMailComposeResultSaved) {
         
-        [self cleanFields];
+        [self cleanAllFields];
     }
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 
 #pragma mark - UITextFieldDelegate
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if ([textField isEqual:self.emailField]) {
-        [self.subjectsField becomeFirstResponder];
+        
+        if (self.isReturnFromValidationEmailError) {
+            [self.emailField resignFirstResponder];
+        }else{
+            [self.subjectsField becomeFirstResponder];
+        }
+        
     }else if ([textField isEqual:self.subjectsField]){
         [self.bodyTextView becomeFirstResponder];
     }
@@ -301,6 +337,7 @@
 
 
 #pragma mark - UITextViewDelegate
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
     if ([text isEqualToString:@"\n"]) {

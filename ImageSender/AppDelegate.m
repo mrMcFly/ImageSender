@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self customAppearance];
+    //[self setImageForBackButtonAppearance];
     
     return YES;
 }
@@ -127,7 +127,7 @@
 }
 
 
-- (void) customAppearance {
+- (void) setImageForBackButtonAppearance {
     
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
