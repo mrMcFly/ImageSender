@@ -32,7 +32,7 @@
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddNewMessage)];
     
-    //[addButton setBackgroundImage:[UIImage imageNamed:@"AddMessage.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    //[addButton setBackgroundImage:[UIImage imageNamed:@"AddMessageButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     self.navigationItem.rightBarButtonItem = addButton;
 
@@ -55,7 +55,6 @@
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -89,77 +88,51 @@
 }
 
 
-//- (IBAction)actionRemoveAll:(UIButton*)sender {
-//    
-//    static NSString *alertMessage = @"Are you sure you want to remove all messages?";
-//    
-//    UIAlertController *removeAlertContrl = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    }];
-//    
-//    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//
-//        NSArray *array = self.fetchedResultsController.fetchedObjects;
-//        for (NSManagedObject *managedObject in array) {
-//            [self.managedObjectContext deleteObject:managedObject];
-//        }
-//        [self.managedObjectContext save:nil];
-//        [self.fetchedResultsController performFetch:nil];
-//        [self.tableView reloadData];
-//    }];
-//    [removeAlertContrl addAction:noAction];
-//    [removeAlertContrl addAction:yesAction];
-//    
-//    [self presentViewController:removeAlertContrl animated:YES completion:nil];
-//}
-
 - (IBAction)actionRemoveAll:(UIButton*)sender {
     
     NSString *alertMessage = nil;
     
-    if (![self isCoreDataHasSavedMessages]) {
+    if (![self isRipositoryHaveSavedMessages]) {
         
         alertMessage = @"There is nothing to delete";
         
         self.alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-       UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-           [self dismissViewControllerAnimated:YES completion:nil];
-       }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
         [self.alertController addAction:okAction];
         [self presentViewController:self.alertController animated:YES completion:nil];
-
+        
     }else{
-    
-    alertMessage = @"Are you sure you want to remove all messages?";
-    
-    self.alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-        NSArray *array = self.fetchedResultsController.fetchedObjects;
-        for (NSManagedObject *managedObject in array) {
-            [self.managedObjectContext deleteObject:managedObject];
-        }
-        [self.managedObjectContext save:nil];
-        [self.fetchedResultsController performFetch:nil];
-        [self.tableView reloadData];
-    }];
+        alertMessage = @"Are you sure you want to remove all messages?";
         
-    [self.alertController addAction:yesAction];
-    [self.alertController addAction:noAction];
+        self.alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
         
-    [self presentViewController:self.alertController animated:YES completion:nil];
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            NSArray *array = self.fetchedResultsController.fetchedObjects;
+            for (NSManagedObject *managedObject in array) {
+                [self.managedObjectContext deleteObject:managedObject];
+            }
+            [self.managedObjectContext save:nil];
+            [self.fetchedResultsController performFetch:nil];
+            [self.tableView reloadData];
+        }];
+        
+        [self.alertController addAction:yesAction];
+        [self.alertController addAction:noAction];
+        
+        [self presentViewController:self.alertController animated:YES completion:nil];
     }
 }
 
 
-- (BOOL) isCoreDataHasSavedMessages {
+- (BOOL) isRipositoryHaveSavedMessages {
     
     NSFetchRequest *request = [[NSFetchRequest alloc]init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"ASMessage" inManagedObjectContext:self.managedObjectContext];
@@ -169,6 +142,7 @@
     BOOL returnResult = [resultArray count] > 0 ? YES : NO;
     return returnResult;
 }
+
 
 #pragma mark - UITableViewDataSource
 

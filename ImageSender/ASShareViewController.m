@@ -13,7 +13,7 @@
 
 @interface ASShareViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectContext  *managedObjectContext;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 @property (strong, nonatomic) UIAlertController   *alertController;
 @property (weak, nonatomic) IBOutlet UIButton     *addPhotoButton;
@@ -26,7 +26,7 @@
 
 @end
 
-//AddPhotoButton
+
 @implementation ASShareViewController
 
 - (void)viewDidLoad {
@@ -185,8 +185,8 @@
 
 - (void) keyboardWillHide:(NSNotification*) notification {
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.scrollView.contentInset = UIEdgeInsetsZero;
+    UIEdgeInsets contentInsets   = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
@@ -292,6 +292,8 @@
         message.body    = self.bodyTextView.text;
         
         UIImage *defaultImage = [UIImage imageNamed:@"AddPhotoButton.png"];
+        
+        //Save to message if image is not default background for button.
         if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
             message.image = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
         }else{
@@ -300,6 +302,7 @@
         [self.managedObjectContext save:nil];
         
         [self cleanAllFields];
+        
     }else if (result == MFMailComposeResultCancelled || result == MFMailComposeResultSaved) {
         
         [self cleanAllFields];

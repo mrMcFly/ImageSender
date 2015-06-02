@@ -22,7 +22,7 @@
 
 -(void)addInfoFromMessage:(ASMessage*)message {
     
-    self.adressLabel.text = message.email;
+    self.adressLabel.text  = message.email;
     self.subjectLabel.text = message.subject;
     self.photoImg.image = [UIImage imageWithData:message.image];
 }
