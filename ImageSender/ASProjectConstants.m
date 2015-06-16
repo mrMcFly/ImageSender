@@ -9,31 +9,31 @@
 #import "ASProjectConstants.h"
 
 //Alert messages text.
-NSString* const AlertMessageTextForEmptyMessageStorage  = @"There is nothing to delete";
-NSString* const AlertMessageTextForRemoveAllMessages    = @"Are you sure you want to remove all messages?";
-NSString* const AlertMessageTextForRemoveCertainMessage = @"Are you sure you want to remove this message?";
-NSString* const AlertMessageTextForNotSupportEmailDispatch = @"Sorry,but your device does not support email dispatch";
-NSString* const AlertMessageTextForNotValidEmail = @"You enter not valid email";
-NSString* const AlertMessageTextForNotAvailableCamera = @"Camera is not available on the simulator";
+NSString* const ASAlertMessageTextForEmptyMessageStorage  = @"There is nothing to delete";
+NSString* const ASAlertMessageTextForRemoveAllMessages    = @"Are you sure you want to remove all messages?";
+NSString* const ASAlertMessageTextForRemoveCertainMessage = @"Are you sure you want to remove this message?";
+NSString* const ASAlertMessageTextForNotSupportEmailDispatch = @"Sorry,but your device does not support email dispatch";
+NSString* const ASAlertMessageTextForNotValidEmail = @"You enter not valid email";
+NSString* const ASAlertMessageTextForNotAvailableCamera = @"Camera is not available on the simulator";
 
 //Alert actions text.
-NSString* const AlertActionTextForConfirmNo  = @"No";
-NSString* const AlertActionTextForConfirmYes = @"Yes";
-NSString* const AlertActionTextForConfirmOk  = @"Ok";
+NSString* const ASAlertActionTextForConfirmNo  = @"No";
+NSString* const ASAlertActionTextForConfirmYes = @"Yes";
+NSString* const ASAlertActionTextForConfirmOk  = @"Ok";
 
 //Alert title text.
-NSString* const AlertTitleTextForCameraError = @"Error";
-NSString* const AlertTitleTextForEmailWarning = @"Email warning";
+NSString* const ASAlertTitleTextForCameraError = @"Error";
+NSString* const ASAlertTitleTextForEmailWarning = @"Email warning";
 
 //Identifiers for Viewcontrollers text.
-NSString* const IdentifierForASDraftsAndMesagesViewController = @"ASDraftsAndMesagesViewController";
-NSString* const IdentifierForASShareViewController = @"ASShareViewController";
+NSString* const ASIdentifierForASDraftsAndMesagesViewController = @"ASDraftsAndMesagesViewController";
+NSString* const ASIdentifierForASShareViewController = @"ASShareViewController";
 
 //Entitys names.
-NSString* const EntityMessageName = @"ASMessage";
+NSString* const ASEntityMessageName = @"ASMessage";
 
 //Image names.
-NSString* const ImageDefaultNameForASShareViewController = @"AddPhotoButton.png";
+NSString* const ASImageDefaultNameForASShareViewController = @"AddPhotoButton.png";
 
 
 @interface ASProjectConstants()

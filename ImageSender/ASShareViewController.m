@@ -84,7 +84,7 @@
             self.addPhotoButton.titleLabel.layer.opacity = 0.0f;
         }else {
             
-            messageImage = [UIImage imageNamed:ImageDefaultNameForASShareViewController];
+            messageImage = [UIImage imageNamed:ASImageDefaultNameForASShareViewController];
         }
         [self.addPhotoButton setBackgroundImage:messageImage forState:UIControlStateNormal];
     }
@@ -126,11 +126,11 @@
 #if TARGET_IPHONE_SIMULATOR
     
     self.alertController =
-    [UIAlertController alertControllerWithTitle: AlertTitleTextForCameraError
-                                        message:AlertMessageTextForNotAvailableCamera
+    [UIAlertController alertControllerWithTitle: ASAlertTitleTextForCameraError
+                                        message:ASAlertMessageTextForNotAvailableCamera
                                  preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction =
-    [UIAlertAction actionWithTitle:AlertActionTextForConfirmOk
+    [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -205,7 +205,7 @@
     self.emailField.text    = nil;
     self.subjectsField.text = nil;
     self.bodyTextView.text  = nil;
-    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:ImageDefaultNameForASShareViewController]forState:UIControlStateNormal];
+    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:ASImageDefaultNameForASShareViewController]forState:UIControlStateNormal];
     self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
 }
 
@@ -234,7 +234,7 @@
             [mailComposeController setSubject:self.subjectsField.text];
             [mailComposeController setMessageBody:self.bodyTextView.text isHTML:NO];
             
-            UIImage *defaultImage = [UIImage imageNamed:ImageDefaultNameForASShareViewController];
+            UIImage *defaultImage = [UIImage imageNamed:ASImageDefaultNameForASShareViewController];
   
             //Define attach or not (image can be default for button) image to email message.
             if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
@@ -248,12 +248,12 @@
         }else{
             //...if email NOT valid
             self.alertController =
-            [UIAlertController alertControllerWithTitle:AlertTitleTextForEmailWarning
-                                                message:AlertMessageTextForNotValidEmail
+            [UIAlertController alertControllerWithTitle:ASAlertTitleTextForEmailWarning
+                                                message:ASAlertMessageTextForNotValidEmail
                                          preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *okAction =
-            [UIAlertAction actionWithTitle:AlertActionTextForConfirmOk
+            [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk
                                      style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action) {
                                        [self dismissViewControllerAnimated:YES completion:nil];
@@ -267,11 +267,11 @@
     }else{
         //If device can't send email.
         self.alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:AlertMessageTextForNotSupportEmailDispatch
+                                                                   message:ASAlertMessageTextForNotSupportEmailDispatch
                                                             preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction =
-        [UIAlertAction actionWithTitle:AlertActionTextForConfirmOk
+        [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action) {
                                    [self dismissViewControllerAnimated:YES completion:nil];
@@ -289,12 +289,12 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
     if (result == MFMailComposeResultSent) {
-        ASMessage *modelMessage = [NSEntityDescription insertNewObjectForEntityForName:EntityMessageName inManagedObjectContext:self.managedObjectContext];
+        ASMessage *modelMessage = [NSEntityDescription insertNewObjectForEntityForName:ASEntityMessageName inManagedObjectContext:self.managedObjectContext];
         modelMessage.email   = self.emailField.text;
         modelMessage.subject = self.subjectsField.text;
         modelMessage.body    = self.bodyTextView.text;
         
-        UIImage *defaultImage = [UIImage imageNamed:ImageDefaultNameForASShareViewController];
+        UIImage *defaultImage = [UIImage imageNamed:ASImageDefaultNameForASShareViewController];
         
         //Save to message if image is not default background for button.
         if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {

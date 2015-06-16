@@ -9,31 +9,31 @@
 #import <Foundation/Foundation.h>
 
 //Alert messages text.
-extern NSString* const AlertMessageTextForEmptyMessageStorage;
-extern NSString* const AlertMessageTextForRemoveAllMessages;
-extern NSString* const AlertMessageTextForRemoveCertainMessage;
-extern NSString* const AlertMessageTextForNotSupportEmailDispatch;
-extern NSString* const AlertMessageTextForNotValidEmail;
-extern NSString* const AlertMessageTextForNotAvailableCamera;
+extern NSString* const ASAlertMessageTextForEmptyMessageStorage;
+extern NSString* const ASAlertMessageTextForRemoveAllMessages;
+extern NSString* const ASAlertMessageTextForRemoveCertainMessage;
+extern NSString* const ASAlertMessageTextForNotSupportEmailDispatch;
+extern NSString* const ASAlertMessageTextForNotValidEmail;
+extern NSString* const ASAlertMessageTextForNotAvailableCamera;
 
 //Alert actions text.
-extern NSString* const AlertActionTextForConfirmNo;
-extern NSString* const AlertActionTextForConfirmYes;
-extern NSString* const AlertActionTextForConfirmOk;
+extern NSString* const ASAlertActionTextForConfirmNo;
+extern NSString* const ASAlertActionTextForConfirmYes;
+extern NSString* const ASAlertActionTextForConfirmOk;
 
 //Alert title text.
-extern NSString* const AlertTitleTextForCameraError;
-extern NSString* const AlertTitleTextForEmailWarning;
+extern NSString* const ASAlertTitleTextForCameraError;
+extern NSString* const ASAlertTitleTextForEmailWarning;
 
 //Identifiers for Viewcontrollers text.
-extern NSString* const IdentifierForASDraftsAndMesagesViewController;
-extern NSString* const IdentifierForASShareViewController;
+extern NSString* const ASIdentifierForASDraftsAndMesagesViewController;
+extern NSString* const ASIdentifierForASShareViewController;
 
 //Entitys names.
-extern NSString* const EntityMessageName;
+extern NSString* const ASEntityMessageName;
 
 //Image names.
-extern NSString* const ImageDefaultNameForASShareViewController;
+extern NSString* const ASImageDefaultNameForASShareViewController;
 
 
 @interface ASProjectConstants : NSObject
