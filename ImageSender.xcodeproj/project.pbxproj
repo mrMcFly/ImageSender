@@ -15,17 +15,11 @@
 		087143AC1B301F97007578E2 /* AddPhotoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438D1B301F97007578E2 /* AddPhotoButton@2x.png */; };
 		087143AD1B301F97007578E2 /* AddPhotoButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438E1B301F97007578E2 /* AddPhotoButton@3x.png */; };
 		087143AE1B301F97007578E2 /* AppIcon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438F1B301F97007578E2 /* AppIcon29@2x.png */; };
-		087143AF1B301F97007578E2 /* AppIcon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143901B301F97007578E2 /* AppIcon29@2x.png */; };
-		087143B01B301F97007578E2 /* AppIcon29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143911B301F97007578E2 /* AppIcon29@3x.png */; };
 		087143B11B301F97007578E2 /* AppIcon29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143921B301F97007578E2 /* AppIcon29@3x.png */; };
-		087143B21B301F97007578E2 /* AppIcon40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143931B301F97007578E2 /* AppIcon40@2x.png */; };
 		087143B31B301F97007578E2 /* AppIcon40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143941B301F97007578E2 /* AppIcon40@2x.png */; };
 		087143B41B301F97007578E2 /* AppIcon40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143951B301F97007578E2 /* AppIcon40@3x.png */; };
-		087143B51B301F97007578E2 /* AppIcon40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143961B301F97007578E2 /* AppIcon40@3x.png */; };
-		087143B61B301F97007578E2 /* AppIcon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143971B301F97007578E2 /* AppIcon60@2x.png */; };
 		087143B71B301F97007578E2 /* AppIcon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143981B301F97007578E2 /* AppIcon60@2x.png */; };
 		087143B81B301F97007578E2 /* AppIcon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143991B301F97007578E2 /* AppIcon60@3x.png */; };
-		087143B91B301F97007578E2 /* AppIcon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439A1B301F97007578E2 /* AppIcon60@3x.png */; };
 		087143BA1B301F97007578E2 /* BackButton@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439B1B301F97007578E2 /* BackButton@1x.png */; };
 		087143BB1B301F97007578E2 /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439C1B301F97007578E2 /* BackButton@2x.png */; };
 		087143BC1B301F97007578E2 /* BackButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439D1B301F97007578E2 /* BackButton@3x.png */; };
@@ -389,27 +383,21 @@
 				194CC9581B18E82600FFBE80 /* Main.storyboard in Resources */,
 				087143AC1B301F97007578E2 /* AddPhotoButton@2x.png in Resources */,
 				087143AA1B301F97007578E2 /* AddMessage@3x.png in Resources */,
-				087143B01B301F97007578E2 /* AppIcon29@3x.png in Resources */,
 				087143C11B301F97007578E2 /* RemoveAllButton.png in Resources */,
 				194CC95D1B18E82600FFBE80 /* LaunchScreen.xib in Resources */,
-				087143B91B301F97007578E2 /* AppIcon60@3x.png in Resources */,
 				087143BA1B301F97007578E2 /* BackButton@1x.png in Resources */,
 				087143BE1B301F97007578E2 /* LoadingScreen@1x.png in Resources */,
 				087143BB1B301F97007578E2 /* BackButton@2x.png in Resources */,
 				087143AB1B301F97007578E2 /* AddPhotoButton.png in Resources */,
-				087143AF1B301F97007578E2 /* AppIcon29@2x.png in Resources */,
-				087143B21B301F97007578E2 /* AppIcon40@2x.png in Resources */,
 				087143B31B301F97007578E2 /* AppIcon40@2x.png in Resources */,
 				087143C41B301F97007578E2 /* share.png in Resources */,
 				087143BC1B301F97007578E2 /* BackButton@3x.png in Resources */,
-				087143B51B301F97007578E2 /* AppIcon40@3x.png in Resources */,
 				087143C01B301F97007578E2 /* LoadingScreen@3x.png in Resources */,
 				087143C61B301F97007578E2 /* share@3x.png in Resources */,
 				087143C31B301F97007578E2 /* RemoveAllButton@3x.png in Resources */,
 				087143B81B301F97007578E2 /* AppIcon60@3x.png in Resources */,
 				194CC95A1B18E82600FFBE80 /* Images.xcassets in Resources */,
 				087143BF1B301F97007578E2 /* LoadingScreen@2x.png in Resources */,
-				087143B61B301F97007578E2 /* AppIcon60@2x.png in Resources */,
 				087143A81B301F97007578E2 /* AddMessage.png in Resources */,
 				087143A91B301F97007578E2 /* AddMessage@2x.png in Resources */,
 				087143B41B301F97007578E2 /* AppIcon40@3x.png in Resources */,

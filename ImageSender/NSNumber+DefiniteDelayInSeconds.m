@@ -25,16 +25,12 @@
     firstArgument = labs(firstArgument);
     secondArgument = labs(secondArgument);
     
-    NSInteger argumentsDecrementResult = firstArgument - secondArgument;
-    
-    if (argumentsDecrementResult == 1) {
-        
-        return arc4random_uniform(1000) < 500 ? firstArgument : secondArgument;
-        
-    }else {
-        
+    if (firstArgument < secondArgument) {
         return firstArgument + arc4random() % (secondArgument - firstArgument);
+    }else {
+        return secondArgument + arc4random() % (firstArgument - secondArgument);
     }
+    
     return 0;
 }
 
