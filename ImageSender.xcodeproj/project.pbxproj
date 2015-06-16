@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		087143721B300A93007578E2 /* ASProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 087143711B300A93007578E2 /* ASProjectConstants.m */; };
+		087143A81B301F97007578E2 /* AddMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143891B301F97007578E2 /* AddMessage.png */; };
+		087143A91B301F97007578E2 /* AddMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438A1B301F97007578E2 /* AddMessage@2x.png */; };
+		087143AA1B301F97007578E2 /* AddMessage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438B1B301F97007578E2 /* AddMessage@3x.png */; };
+		087143AB1B301F97007578E2 /* AddPhotoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438C1B301F97007578E2 /* AddPhotoButton.png */; };
+		087143AC1B301F97007578E2 /* AddPhotoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438D1B301F97007578E2 /* AddPhotoButton@2x.png */; };
+		087143AD1B301F97007578E2 /* AddPhotoButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438E1B301F97007578E2 /* AddPhotoButton@3x.png */; };
+		087143AE1B301F97007578E2 /* AppIcon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871438F1B301F97007578E2 /* AppIcon29@2x.png */; };
+		087143AF1B301F97007578E2 /* AppIcon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143901B301F97007578E2 /* AppIcon29@2x.png */; };
+		087143B01B301F97007578E2 /* AppIcon29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143911B301F97007578E2 /* AppIcon29@3x.png */; };
+		087143B11B301F97007578E2 /* AppIcon29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143921B301F97007578E2 /* AppIcon29@3x.png */; };
+		087143B21B301F97007578E2 /* AppIcon40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143931B301F97007578E2 /* AppIcon40@2x.png */; };
+		087143B31B301F97007578E2 /* AppIcon40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143941B301F97007578E2 /* AppIcon40@2x.png */; };
+		087143B41B301F97007578E2 /* AppIcon40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143951B301F97007578E2 /* AppIcon40@3x.png */; };
+		087143B51B301F97007578E2 /* AppIcon40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143961B301F97007578E2 /* AppIcon40@3x.png */; };
+		087143B61B301F97007578E2 /* AppIcon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143971B301F97007578E2 /* AppIcon60@2x.png */; };
+		087143B71B301F97007578E2 /* AppIcon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143981B301F97007578E2 /* AppIcon60@2x.png */; };
+		087143B81B301F97007578E2 /* AppIcon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143991B301F97007578E2 /* AppIcon60@3x.png */; };
+		087143B91B301F97007578E2 /* AppIcon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439A1B301F97007578E2 /* AppIcon60@3x.png */; };
+		087143BA1B301F97007578E2 /* BackButton@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439B1B301F97007578E2 /* BackButton@1x.png */; };
+		087143BB1B301F97007578E2 /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439C1B301F97007578E2 /* BackButton@2x.png */; };
+		087143BC1B301F97007578E2 /* BackButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439D1B301F97007578E2 /* BackButton@3x.png */; };
+		087143BE1B301F97007578E2 /* LoadingScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0871439F1B301F97007578E2 /* LoadingScreen@1x.png */; };
+		087143BF1B301F97007578E2 /* LoadingScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A01B301F97007578E2 /* LoadingScreen@2x.png */; };
+		087143C01B301F97007578E2 /* LoadingScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A11B301F97007578E2 /* LoadingScreen@3x.png */; };
+		087143C11B301F97007578E2 /* RemoveAllButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A21B301F97007578E2 /* RemoveAllButton.png */; };
+		087143C21B301F97007578E2 /* RemoveAllButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A31B301F97007578E2 /* RemoveAllButton@2x.png */; };
+		087143C31B301F97007578E2 /* RemoveAllButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A41B301F97007578E2 /* RemoveAllButton@3x.png */; };
+		087143C41B301F97007578E2 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A51B301F97007578E2 /* share.png */; };
+		087143C51B301F97007578E2 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A61B301F97007578E2 /* share@2x.png */; };
+		087143C61B301F97007578E2 /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 087143A71B301F97007578E2 /* share@3x.png */; };
+		087143CD1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 087143CC1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m */; };
 		194CC94C1B18E82600FFBE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC94B1B18E82600FFBE80 /* main.m */; };
 		194CC94F1B18E82600FFBE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC94E1B18E82600FFBE80 /* AppDelegate.m */; };
 		194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9501B18E82600FFBE80 /* ImageSender.xcdatamodeld */; };
@@ -32,6 +64,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		087143701B300A93007578E2 /* ASProjectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProjectConstants.h; sourceTree = "<group>"; };
+		087143711B300A93007578E2 /* ASProjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProjectConstants.m; sourceTree = "<group>"; };
+		087143891B301F97007578E2 /* AddMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AddMessage.png; path = Images.xcassets/AddMessageButton.imageset/AddMessage.png; sourceTree = "<group>"; };
+		0871438A1B301F97007578E2 /* AddMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AddMessage@2x.png"; path = "Images.xcassets/AddMessageButton.imageset/AddMessage@2x.png"; sourceTree = "<group>"; };
+		0871438B1B301F97007578E2 /* AddMessage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AddMessage@3x.png"; path = "Images.xcassets/AddMessageButton.imageset/AddMessage@3x.png"; sourceTree = "<group>"; };
+		0871438C1B301F97007578E2 /* AddPhotoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AddPhotoButton.png; path = Images.xcassets/AddPhotoButton.imageset/AddPhotoButton.png; sourceTree = "<group>"; };
+		0871438D1B301F97007578E2 /* AddPhotoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AddPhotoButton@2x.png"; path = "Images.xcassets/AddPhotoButton.imageset/AddPhotoButton@2x.png"; sourceTree = "<group>"; };
+		0871438E1B301F97007578E2 /* AddPhotoButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AddPhotoButton@3x.png"; path = "Images.xcassets/AddPhotoButton.imageset/AddPhotoButton@3x.png"; sourceTree = "<group>"; };
+		0871438F1B301F97007578E2 /* AppIcon29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon29@2x.png"; path = "Images.xcassets/AppIcon.appiconset/AppIcon29@2x.png"; sourceTree = "<group>"; };
+		087143901B301F97007578E2 /* AppIcon29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon29@2x.png"; path = "Images.xcassets/AppIcon29.imageset/AppIcon29@2x.png"; sourceTree = "<group>"; };
+		087143911B301F97007578E2 /* AppIcon29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon29@3x.png"; path = "Images.xcassets/AppIcon.appiconset/AppIcon29@3x.png"; sourceTree = "<group>"; };
+		087143921B301F97007578E2 /* AppIcon29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon29@3x.png"; path = "Images.xcassets/AppIcon29.imageset/AppIcon29@3x.png"; sourceTree = "<group>"; };
+		087143931B301F97007578E2 /* AppIcon40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon40@2x.png"; path = "Images.xcassets/AppIcon.appiconset/AppIcon40@2x.png"; sourceTree = "<group>"; };
+		087143941B301F97007578E2 /* AppIcon40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon40@2x.png"; path = "Images.xcassets/AppIcon40.imageset/AppIcon40@2x.png"; sourceTree = "<group>"; };
+		087143951B301F97007578E2 /* AppIcon40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon40@3x.png"; path = "Images.xcassets/AppIcon.appiconset/AppIcon40@3x.png"; sourceTree = "<group>"; };
+		087143961B301F97007578E2 /* AppIcon40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon40@3x.png"; path = "Images.xcassets/AppIcon40.imageset/AppIcon40@3x.png"; sourceTree = "<group>"; };
+		087143971B301F97007578E2 /* AppIcon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon60@2x.png"; path = "Images.xcassets/AppIcon.appiconset/AppIcon60@2x.png"; sourceTree = "<group>"; };
+		087143981B301F97007578E2 /* AppIcon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon60@2x.png"; path = "Images.xcassets/AppIcon60.imageset/AppIcon60@2x.png"; sourceTree = "<group>"; };
+		087143991B301F97007578E2 /* AppIcon60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon60@3x.png"; path = "Images.xcassets/AppIcon.appiconset/AppIcon60@3x.png"; sourceTree = "<group>"; };
+		0871439A1B301F97007578E2 /* AppIcon60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon60@3x.png"; path = "Images.xcassets/AppIcon60.imageset/AppIcon60@3x.png"; sourceTree = "<group>"; };
+		0871439B1B301F97007578E2 /* BackButton@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BackButton@1x.png"; path = "Images.xcassets/BackButton.imageset/BackButton@1x.png"; sourceTree = "<group>"; };
+		0871439C1B301F97007578E2 /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BackButton@2x.png"; path = "Images.xcassets/BackButton.imageset/BackButton@2x.png"; sourceTree = "<group>"; };
+		0871439D1B301F97007578E2 /* BackButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BackButton@3x.png"; path = "Images.xcassets/BackButton.imageset/BackButton@3x.png"; sourceTree = "<group>"; };
+		0871439F1B301F97007578E2 /* LoadingScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoadingScreen@1x.png"; path = "Images.xcassets/LoadingScreen.imageset/LoadingScreen@1x.png"; sourceTree = "<group>"; };
+		087143A01B301F97007578E2 /* LoadingScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoadingScreen@2x.png"; path = "Images.xcassets/LoadingScreen.imageset/LoadingScreen@2x.png"; sourceTree = "<group>"; };
+		087143A11B301F97007578E2 /* LoadingScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoadingScreen@3x.png"; path = "Images.xcassets/LoadingScreen.imageset/LoadingScreen@3x.png"; sourceTree = "<group>"; };
+		087143A21B301F97007578E2 /* RemoveAllButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RemoveAllButton.png; path = Images.xcassets/RemoveAllButton.imageset/RemoveAllButton.png; sourceTree = "<group>"; };
+		087143A31B301F97007578E2 /* RemoveAllButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RemoveAllButton@2x.png"; path = "Images.xcassets/RemoveAllButton.imageset/RemoveAllButton@2x.png"; sourceTree = "<group>"; };
+		087143A41B301F97007578E2 /* RemoveAllButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RemoveAllButton@3x.png"; path = "Images.xcassets/RemoveAllButton.imageset/RemoveAllButton@3x.png"; sourceTree = "<group>"; };
+		087143A51B301F97007578E2 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = Images.xcassets/share.imageset/share.png; sourceTree = "<group>"; };
+		087143A61B301F97007578E2 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@2x.png"; path = "Images.xcassets/share.imageset/share@2x.png"; sourceTree = "<group>"; };
+		087143A71B301F97007578E2 /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@3x.png"; path = "Images.xcassets/share.imageset/share@3x.png"; sourceTree = "<group>"; };
+		087143CB1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+DefiniteDelayInSeconds.h"; sourceTree = "<group>"; };
+		087143CC1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+DefiniteDelayInSeconds.m"; sourceTree = "<group>"; };
 		194CC9461B18E82600FFBE80 /* ImageSender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194CC94A1B18E82600FFBE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		194CC94B1B18E82600FFBE80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -74,6 +140,84 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		087143881B301F67007578E2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				087143C71B301FD9007578E2 /* Buttons */,
+				087143C81B301FFD007578E2 /* AppIcon */,
+				087143C91B30200E007578E2 /* LoadingScreen */,
+				087143CA1B302029007578E2 /* NavigationBar */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		087143C71B301FD9007578E2 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				087143891B301F97007578E2 /* AddMessage.png */,
+				0871438A1B301F97007578E2 /* AddMessage@2x.png */,
+				0871438B1B301F97007578E2 /* AddMessage@3x.png */,
+				0871438C1B301F97007578E2 /* AddPhotoButton.png */,
+				0871438D1B301F97007578E2 /* AddPhotoButton@2x.png */,
+				0871438E1B301F97007578E2 /* AddPhotoButton@3x.png */,
+				0871439B1B301F97007578E2 /* BackButton@1x.png */,
+				0871439C1B301F97007578E2 /* BackButton@2x.png */,
+				0871439D1B301F97007578E2 /* BackButton@3x.png */,
+				087143A21B301F97007578E2 /* RemoveAllButton.png */,
+				087143A31B301F97007578E2 /* RemoveAllButton@2x.png */,
+				087143A41B301F97007578E2 /* RemoveAllButton@3x.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		087143C81B301FFD007578E2 /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				0871438F1B301F97007578E2 /* AppIcon29@2x.png */,
+				087143901B301F97007578E2 /* AppIcon29@2x.png */,
+				087143911B301F97007578E2 /* AppIcon29@3x.png */,
+				087143921B301F97007578E2 /* AppIcon29@3x.png */,
+				087143931B301F97007578E2 /* AppIcon40@2x.png */,
+				087143941B301F97007578E2 /* AppIcon40@2x.png */,
+				087143951B301F97007578E2 /* AppIcon40@3x.png */,
+				087143961B301F97007578E2 /* AppIcon40@3x.png */,
+				087143971B301F97007578E2 /* AppIcon60@2x.png */,
+				087143981B301F97007578E2 /* AppIcon60@2x.png */,
+				087143991B301F97007578E2 /* AppIcon60@3x.png */,
+				0871439A1B301F97007578E2 /* AppIcon60@3x.png */,
+			);
+			name = AppIcon;
+			sourceTree = "<group>";
+		};
+		087143C91B30200E007578E2 /* LoadingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0871439F1B301F97007578E2 /* LoadingScreen@1x.png */,
+				087143A01B301F97007578E2 /* LoadingScreen@2x.png */,
+				087143A11B301F97007578E2 /* LoadingScreen@3x.png */,
+			);
+			name = LoadingScreen;
+			sourceTree = "<group>";
+		};
+		087143CA1B302029007578E2 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				087143A51B301F97007578E2 /* share.png */,
+				087143A61B301F97007578E2 /* share@2x.png */,
+				087143A71B301F97007578E2 /* share@3x.png */,
+			);
+			name = NavigationBar;
+			sourceTree = "<group>";
+		};
+		087144011B302F42007578E2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				087143CB1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.h */,
+				087143CC1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		194CC93D1B18E82600FFBE80 = {
 			isa = PBXGroup;
 			children = (
@@ -103,8 +247,12 @@
 				195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */,
 				195A6CF41B1971C800D0254F /* ASShareViewController.h */,
 				195A6CF51B1971C800D0254F /* ASShareViewController.m */,
+				087143701B300A93007578E2 /* ASProjectConstants.h */,
+				087143711B300A93007578E2 /* ASProjectConstants.m */,
+				087144011B302F42007578E2 /* Category */,
 				195A6CFA1B198B1200D0254F /* Cell Custom */,
 				195A6CF01B196EF500D0254F /* Model */,
+				087143881B301F67007578E2 /* Images */,
 				194CC9561B18E82600FFBE80 /* Main.storyboard */,
 				194CC9591B18E82600FFBE80 /* Images.xcassets */,
 				194CC95B1B18E82600FFBE80 /* LaunchScreen.xib */,
@@ -239,8 +387,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				194CC9581B18E82600FFBE80 /* Main.storyboard in Resources */,
+				087143AC1B301F97007578E2 /* AddPhotoButton@2x.png in Resources */,
+				087143AA1B301F97007578E2 /* AddMessage@3x.png in Resources */,
+				087143B01B301F97007578E2 /* AppIcon29@3x.png in Resources */,
+				087143C11B301F97007578E2 /* RemoveAllButton.png in Resources */,
 				194CC95D1B18E82600FFBE80 /* LaunchScreen.xib in Resources */,
+				087143B91B301F97007578E2 /* AppIcon60@3x.png in Resources */,
+				087143BA1B301F97007578E2 /* BackButton@1x.png in Resources */,
+				087143BE1B301F97007578E2 /* LoadingScreen@1x.png in Resources */,
+				087143BB1B301F97007578E2 /* BackButton@2x.png in Resources */,
+				087143AB1B301F97007578E2 /* AddPhotoButton.png in Resources */,
+				087143AF1B301F97007578E2 /* AppIcon29@2x.png in Resources */,
+				087143B21B301F97007578E2 /* AppIcon40@2x.png in Resources */,
+				087143B31B301F97007578E2 /* AppIcon40@2x.png in Resources */,
+				087143C41B301F97007578E2 /* share.png in Resources */,
+				087143BC1B301F97007578E2 /* BackButton@3x.png in Resources */,
+				087143B51B301F97007578E2 /* AppIcon40@3x.png in Resources */,
+				087143C01B301F97007578E2 /* LoadingScreen@3x.png in Resources */,
+				087143C61B301F97007578E2 /* share@3x.png in Resources */,
+				087143C31B301F97007578E2 /* RemoveAllButton@3x.png in Resources */,
+				087143B81B301F97007578E2 /* AppIcon60@3x.png in Resources */,
 				194CC95A1B18E82600FFBE80 /* Images.xcassets in Resources */,
+				087143BF1B301F97007578E2 /* LoadingScreen@2x.png in Resources */,
+				087143B61B301F97007578E2 /* AppIcon60@2x.png in Resources */,
+				087143A81B301F97007578E2 /* AddMessage.png in Resources */,
+				087143A91B301F97007578E2 /* AddMessage@2x.png in Resources */,
+				087143B41B301F97007578E2 /* AppIcon40@3x.png in Resources */,
+				087143B71B301F97007578E2 /* AppIcon60@2x.png in Resources */,
+				087143C21B301F97007578E2 /* RemoveAllButton@2x.png in Resources */,
+				087143B11B301F97007578E2 /* AppIcon29@3x.png in Resources */,
+				087143AE1B301F97007578E2 /* AppIcon29@2x.png in Resources */,
+				087143AD1B301F97007578E2 /* AddPhotoButton@3x.png in Resources */,
+				087143C51B301F97007578E2 /* share@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,10 +436,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087143CD1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m in Sources */,
 				194CC94F1B18E82600FFBE80 /* AppDelegate.m in Sources */,
 				194CC94C1B18E82600FFBE80 /* main.m in Sources */,
 				194CC9551B18E82600FFBE80 /* ASLoadingScreenViewController.m in Sources */,
 				195A6CF91B1973B300D0254F /* ASMessageInfoCell.m in Sources */,
+				087143721B300A93007578E2 /* ASProjectConstants.m in Sources */,
 				195A6CF61B1971C800D0254F /* ASShareViewController.m in Sources */,
 				195A6CF31B19710300D0254F /* ASDraftsAndMesagesViewController.m in Sources */,
 				194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */,

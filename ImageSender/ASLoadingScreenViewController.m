@@ -8,6 +8,8 @@
 
 #import "ASLoadingScreenViewController.h"
 #import "ASDraftsAndMesagesViewController.h"
+#import "ASProjectConstants.h"
+#import "NSNumber+DefiniteDelayInSeconds.h"
 
 @interface ASLoadingScreenViewController ()
 
@@ -20,11 +22,13 @@
     
     self.navigationController.navigationBarHidden = YES;
     
-    NSInteger delayInSeconds = arc4random_uniform(1000) < 500 ? 3 : 2;
+    NSInteger delayInSeconds = [NSNumber generateLoadingScreenDelay];
+    
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
         
-        ASDraftsAndMesagesViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ASDraftsAndMesagesViewController"];
+        ASDraftsAndMesagesViewController *mainVC = [self.storyboard
+        instantiateViewControllerWithIdentifier:IdentifierForASDraftsAndMesagesViewController];
         self.navigationController.navigationBarHidden = NO;
         self.navigationController.viewControllers = @[mainVC];
     });

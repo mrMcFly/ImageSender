@@ -11,7 +11,7 @@
 
 @interface ASShareViewController : UIViewController 
 
-@property (strong, nonatomic) ASMessage *message;
+@property (strong, nonatomic) ASMessage *modelMessage;
 
 - (IBAction)actionAddPhoto:(UIButton *)sender;
 - (IBAction)actionShareByEmail:(UIButton*)sender;
