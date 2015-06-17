@@ -8,9 +8,11 @@
 
 #import "ASProjectConstants.h"
 
-//******************************* String constants *********************************
+//-----------------------------------------------------------------------------------
+//*************************** String constants **********************************
+//-----------------------------------------------------------------------------------
 
-//-------------------------------- Alerts ----------------------------------------
+//-------------------------------- Alerts -------------------------------------------
 
 //Alert messages text.
 NSString* const AS_Alert_Message_Text_For_Empty_Message_Storage  = @"There is nothing to delete";
@@ -68,7 +70,9 @@ NSString* const AS_TextView_String_For_Resign_First_Responder = @"\n";
 NSString* const AS_MIME_Type_Is_Image_PNG = @"image/png";
 
 
+//-----------------------------------------------------------------------------------
 //******************************* Numbers constants *********************************
+//-----------------------------------------------------------------------------------
 
 //Press time duration
 double const AS_Minimum_Time_Press_Duration_For_Delete_Cell = 2.0;
