@@ -52,6 +52,7 @@ extern NSString* const AS_Image_PNG_Representation_Key_Name;
 
 //Image names.
 extern NSString* const AS_Image_Default_Name_For_ShareViewController;
+extern NSString* const AS_Image_File_Name_Assosiated_With_The_Data;
 
 
 //-------------------------------- Additional ---------------------------------------

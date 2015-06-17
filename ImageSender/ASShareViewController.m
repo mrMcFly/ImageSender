@@ -240,7 +240,7 @@
             if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
                 
                 NSData *imageData = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
-                [mailComposeController addAttachmentData:imageData mimeType:AS_MIME_Type_Is_Image_PNG fileName:@"MyImage.png"];
+                [mailComposeController addAttachmentData:imageData mimeType:AS_MIME_Type_Is_Image_PNG fileName:AS_Image_File_Name_Assosiated_With_The_Data];
             }
             
             [self presentViewController:mailComposeController animated:YES completion:nil];

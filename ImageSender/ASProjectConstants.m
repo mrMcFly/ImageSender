@@ -50,6 +50,8 @@ NSString* const AS_Image_PNG_Representation_Key_Name = @"UIImagePickerController
 
 //Image names.
 NSString* const AS_Image_Default_Name_For_ShareViewController = @"AddPhotoButton.png";
+NSString* const AS_Image_File_Name_Assosiated_With_The_Data = @"MyImage.png";
+
 
 //------------------------------- Additional --------------------------------------
 
