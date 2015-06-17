@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Drafts and sent messages";
+    self.navigationItem.title =AS_NavigationItem_Title_For_DraftsAndMessagesViewController;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     UIBarButtonItem *addNewMessageButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddNewMessage)];
@@ -70,7 +70,7 @@
     AppDelegate *applicationDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.managedObjectContext= applicationDelegate.managedObjectContext;
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:ASEntityMessageName];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:AS_Entity_Message_Name];
     
     NSSortDescriptor *emailDescriptor = [[NSSortDescriptor alloc]initWithKey:@"email" ascending:YES];
     [fetchRequest setSortDescriptors:@[emailDescriptor]];
@@ -84,7 +84,7 @@
 
 - (void) actionAddNewMessage {
     
-    ASShareViewController *shareVC = [self.storyboard instantiateViewControllerWithIdentifier:ASIdentifierForASShareViewController];
+    ASShareViewController *shareVC = [self.storyboard instantiateViewControllerWithIdentifier:AS_Identifier_For_ShareViewController];
     [self.navigationController pushViewController:shareVC animated:YES];
 }
 
@@ -95,12 +95,12 @@
     
     if (![self isRipositoryHaveSavedMessages]) {
         
-        alertMessageText = ASAlertMessageTextForEmptyMessageStorage;
+        alertMessageText = AS_Alert_Message_Text_For_Empty_Message_Storage;
         
         self.alertController = [UIAlertController alertControllerWithTitle:nil
                                                                    message:alertMessageText
                                                             preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [self.alertController addAction:okAction];
@@ -108,15 +108,15 @@
         
     }else{
         
-        alertMessageText = ASAlertMessageTextForRemoveAllMessages;
+        alertMessageText = AS_Alert_Message_Text_For_Remove_All_Messages;
         
         self.alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessageText preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmNo style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_No style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         
-        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmYes style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Yes style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             NSArray *fetchedObjectsArray = self.fetchedResultsController.fetchedObjects;
             for (NSManagedObject *managedObject in fetchedObjectsArray) {
@@ -138,7 +138,7 @@
 - (BOOL) isRipositoryHaveSavedMessages {
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *messageEntityDescription = [NSEntityDescription entityForName:ASEntityMessageName inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *messageEntityDescription = [NSEntityDescription entityForName:AS_Entity_Message_Name inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:messageEntityDescription];
     
     NSArray *fetchedObjectsArray = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -174,7 +174,7 @@
     
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleDeleteCell:)];
     longPressRecognizer.delegate = self;
-    longPressRecognizer.minimumPressDuration = 2.0;
+    longPressRecognizer.minimumPressDuration = AS_Minimum_Time_Press_Duration_For_Delete_Cell;
     [messageInfoCell addGestureRecognizer:longPressRecognizer];
     
     return messageInfoCell;
@@ -187,7 +187,7 @@
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ASShareViewController *shareVC = [self.storyboard instantiateViewControllerWithIdentifier:ASIdentifierForASShareViewController];
+    ASShareViewController *shareVC = [self.storyboard instantiateViewControllerWithIdentifier:AS_Identifier_For_ShareViewController];
     ASMessage *modelMessage = [self.fetchedResultsController objectAtIndexPath:indexPath];
     shareVC.modelMessage = modelMessage;
     [self.navigationController pushViewController:shareVC animated:YES];
@@ -202,15 +202,15 @@
         CGPoint longTapPoint = [longGesture locationInView:self.tableView];
         NSIndexPath *indexPathForCell = [self.tableView indexPathForRowAtPoint:longTapPoint];
         
-        NSString *removeMessageText = ASAlertMessageTextForRemoveCertainMessage;
+        NSString *removeMessageText = AS_Alert_Message_Text_For_Remove_Certain_Message;
 
         self.alertController = [UIAlertController alertControllerWithTitle:nil message:removeMessageText preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmNo style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_No style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         
-        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmYes style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Yes style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 
             [self.managedObjectContext deleteObject:[self.fetchedResultsController.fetchedObjects objectAtIndex:indexPathForCell.row]];
             [self.managedObjectContext save:nil];

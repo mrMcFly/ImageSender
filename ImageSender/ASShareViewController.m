@@ -35,7 +35,7 @@
     
     self.addPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
     
-    self.navigationItem.title = @"Share";
+    self.navigationItem.title = AS_Navigation_Item_Title_For_ShareViewController;
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
@@ -81,10 +81,10 @@
         if (self.modelMessage.image) {
         
             messageImage = [[UIImage alloc]initWithData:self.modelMessage.image];
-            self.addPhotoButton.titleLabel.layer.opacity = 0.0f;
+            self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Negatively;
         }else {
             
-            messageImage = [UIImage imageNamed:ASImageDefaultNameForASShareViewController];
+            messageImage = [UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController];
         }
         [self.addPhotoButton setBackgroundImage:messageImage forState:UIControlStateNormal];
     }
@@ -96,21 +96,21 @@
     self.alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cameraAction =
-    [UIAlertAction actionWithTitle:@"Camera"
+    [UIAlertAction actionWithTitle:AS_Alert_Title_Text_For_Camera
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction *action) {
         [self handleCamera];
     }];
     
     UIAlertAction *imageGalleryAction =
-    [UIAlertAction actionWithTitle:@"Photo Gallery"
+    [UIAlertAction actionWithTitle:AS_Alert_Title_Text_For_Photo_Gallery
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction *action) {
         [self handleImageGallery];
     }];
     
     UIAlertAction *cancelAction =
-    [UIAlertAction actionWithTitle:@"Cancel"
+    [UIAlertAction actionWithTitle:AS_Alert_Title_Text_For_Cancel
                              style:UIAlertActionStyleCancel
                            handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -126,11 +126,11 @@
 #if TARGET_IPHONE_SIMULATOR
     
     self.alertController =
-    [UIAlertController alertControllerWithTitle: ASAlertTitleTextForCameraError
-                                        message:ASAlertMessageTextForNotAvailableCamera
+    [UIAlertController alertControllerWithTitle: AS_Alert_Title_Text_For_Camera_Error
+                                        message:AS_Alert_Message_Text_For_Not_Available_Camera
                                  preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction =
-    [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk
+    [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
                              style:UIAlertActionStyleDefault
                            handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -177,7 +177,7 @@
     NSDictionary *keyboardInfo = [notification userInfo];
     CGSize keyboardSize = [[keyboardInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0f, 0.0f, keyboardSize.height , 0.0f);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(AS_ScrollView_Edge_Insets_Equals_Nil, AS_ScrollView_Edge_Insets_Equals_Nil, keyboardSize.height , AS_ScrollView_Edge_Insets_Equals_Nil);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
 }
@@ -194,8 +194,8 @@
 
 - (BOOL)isValidEmailAdress:(NSString*) emailAdress
 {
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    NSString *emailRegExFormat = AS_Regular_Expension_Format_For_Email;
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegExFormat];
     
     return [emailPredicate evaluateWithObject:emailAdress];
 }
@@ -205,8 +205,8 @@
     self.emailField.text    = nil;
     self.subjectsField.text = nil;
     self.bodyTextView.text  = nil;
-    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:ASImageDefaultNameForASShareViewController]forState:UIControlStateNormal];
-    self.addPhotoButton.titleLabel.layer.opacity = 1.0f;
+    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController]forState:UIControlStateNormal];
+    self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Affirmatively;
 }
 
 
@@ -234,13 +234,13 @@
             [mailComposeController setSubject:self.subjectsField.text];
             [mailComposeController setMessageBody:self.bodyTextView.text isHTML:NO];
             
-            UIImage *defaultImage = [UIImage imageNamed:ASImageDefaultNameForASShareViewController];
+            UIImage *defaultImage = [UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController];
   
             //Define attach or not (image can be default for button) image to email message.
             if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
                 
                 NSData *imageData = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
-                [mailComposeController addAttachmentData:imageData mimeType:@"image/png" fileName:@"MyImage.png"];
+                [mailComposeController addAttachmentData:imageData mimeType:AS_MIME_Type_Is_Image_PNG fileName:@"MyImage.png"];
             }
             
             [self presentViewController:mailComposeController animated:YES completion:nil];
@@ -248,12 +248,12 @@
         }else{
             //...if email NOT valid
             self.alertController =
-            [UIAlertController alertControllerWithTitle:ASAlertTitleTextForEmailWarning
-                                                message:ASAlertMessageTextForNotValidEmail
+            [UIAlertController alertControllerWithTitle:AS_Alert_Title_Text_For_Email_Warning
+                                                message:AS_Alert_Message_Text_For_Not_Valid_Email
                                          preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *okAction =
-            [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk
+            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
                                      style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action) {
                                        [self dismissViewControllerAnimated:YES completion:nil];
@@ -267,11 +267,11 @@
     }else{
         //If device can't send email.
         self.alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:ASAlertMessageTextForNotSupportEmailDispatch
+                                                                   message:AS_Alert_Message_Text_For_Not_Support_Email_Dispatch
                                                             preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction =
-        [UIAlertAction actionWithTitle:ASAlertActionTextForConfirmOk
+        [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action) {
                                    [self dismissViewControllerAnimated:YES completion:nil];
@@ -289,12 +289,12 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
     if (result == MFMailComposeResultSent) {
-        ASMessage *modelMessage = [NSEntityDescription insertNewObjectForEntityForName:ASEntityMessageName inManagedObjectContext:self.managedObjectContext];
+        ASMessage *modelMessage = [NSEntityDescription insertNewObjectForEntityForName:AS_Entity_Message_Name inManagedObjectContext:self.managedObjectContext];
         modelMessage.email   = self.emailField.text;
         modelMessage.subject = self.subjectsField.text;
         modelMessage.body    = self.bodyTextView.text;
         
-        UIImage *defaultImage = [UIImage imageNamed:ASImageDefaultNameForASShareViewController];
+        UIImage *defaultImage = [UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController];
         
         //Save to message if image is not default background for button.
         if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
@@ -346,7 +346,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
-    if ([text isEqualToString:@"\n"]) {
+    if ([text isEqualToString:AS_TextView_String_For_Resign_First_Responder]) {
         [textView resignFirstResponder];
         return NO;
     }
@@ -358,10 +358,10 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    NSData *dataImage = UIImagePNGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"]);
+    NSData *dataImage = UIImagePNGRepresentation([info objectForKey:AS_Image_PNG_Representation_Key_Name]);
     UIImage *imageFromData = [[UIImage alloc]initWithData:dataImage];
     [self.addPhotoButton setBackgroundImage:imageFromData forState:UIControlStateNormal];
-    self.addPhotoButton.titleLabel.layer.opacity = 0.0f;
+    self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Negatively;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

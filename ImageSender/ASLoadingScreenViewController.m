@@ -28,7 +28,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
         
         ASDraftsAndMesagesViewController *mainVC = [self.storyboard
-        instantiateViewControllerWithIdentifier:ASIdentifierForASDraftsAndMesagesViewController];
+        instantiateViewControllerWithIdentifier:AS_Identifier_For_DraftsAndMesagesViewController];
         self.navigationController.navigationBarHidden = NO;
         self.navigationController.viewControllers = @[mainVC];
     });
