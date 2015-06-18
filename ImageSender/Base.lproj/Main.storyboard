@@ -81,31 +81,31 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kv-LC-b01" userLabel="Adress: Label">
-                                                    <rect key="frame" x="8" y="8" width="58" height="20.5"/>
+                                                    <rect key="frame" x="8" y="8" width="58" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADf-WQ-D1H" userLabel="Subject: Label">
-                                                    <rect key="frame" x="8" y="36" width="56.5" height="18"/>
+                                                    <rect key="frame" x="8" y="37" width="57" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5c-Gu-11o" userLabel="emailAdressLabel">
-                                                    <rect key="frame" x="74" y="8" width="442" height="20.5"/>
+                                                    <rect key="frame" x="74" y="8" width="442" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.72941176470588232" green="0.77254901960784317" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGq-Ol-hce" userLabel="subjectTest Label">
-                                                    <rect key="frame" x="74" y="37.5" width="442" height="18"/>
+                                                    <rect key="frame" x="74" y="38" width="442" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.72941176470588232" green="0.77254901960784317" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CMl-o3-xAQ" userLabel="Photo ImageView">
-                                                    <rect key="frame" x="524" y="8" width="68" height="68.5"/>
+                                                    <rect key="frame" x="524" y="8" width="68" height="68"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="CMl-o3-xAQ" secondAttribute="height" multiplier="1:1" id="uEu-Wm-jdZ"/>
                                                     </constraints>
@@ -209,7 +209,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-qK-fvx" userLabel="E-mail Label">
-                                                <rect key="frame" x="20" y="162" width="43.5" height="18"/>
+                                                <rect key="frame" x="20" y="162" width="44" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -325,7 +325,7 @@
     </scenes>
     <resources>
         <image name="AddPhotoButton" width="77" height="77"/>
-        <image name="LoadingScreen" width="640" height="960"/>
+        <image name="LoadingScreen" width="211" height="317"/>
         <image name="RemoveAllButton" width="201" height="16"/>
         <image name="share" width="203" height="18"/>
     </resources>
