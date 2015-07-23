@@ -12,7 +12,8 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "ASProjectConstants.h"
 
-@interface ASShareViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, NSFetchedResultsControllerDelegate>
+
+@interface ASShareViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, NSFetchedResultsControllerDelegate,UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext  *managedObjectContext;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
@@ -24,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (assign, nonatomic) BOOL isReturnFromValidationEmailError;
+
+@property (strong, nonatomic) UITextField *actionField;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @end
 
@@ -125,6 +129,16 @@
     
 #if TARGET_IPHONE_SIMULATOR
     
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        
+        [[[UIAlertView alloc]initWithTitle:AS_Alert_Title_Text_For_Camera_Error
+                                   message:AS_Alert_Message_Text_For_Not_Available_Camera
+                                  delegate:self
+                         cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Ok
+                         otherButtonTitles:nil]show];
+        
+    }else {
+        
     self.alertController =
     [UIAlertController alertControllerWithTitle: AS_Alert_Title_Text_For_Camera_Error
                                         message:AS_Alert_Message_Text_For_Not_Available_Camera
@@ -137,6 +151,8 @@
     }];
     [self.alertController addAction:okAction];
     [self presentViewController:self.alertController animated:YES completion:nil];
+    }
+    
 #elif TARGET_OS_IPHONE
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -157,12 +173,48 @@
 }
 
 
+- (void) cleanAllFields {
+    
+    //dispatch_async(dispatch_get_main_queue(), ^{
+        self.emailField.text    = nil;
+        self.subjectsField.text = nil;
+        self.bodyTextView.text  = nil;
+        [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController]forState:UIControlStateNormal];
+        self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Affirmatively;
+   // });
+}
+
+
+- (BOOL)isValidEmailAdress:(NSString*) emailAdress
+{
+    NSString *emailRegExFormat = AS_Regular_Expension_Format_For_Email;
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegExFormat];
+    
+    return [emailPredicate evaluateWithObject:emailAdress];
+}
+
+
+- (void) setAndShowActionSheetForAddNewImage {
+    
+    self.actionSheet =
+    [[UIActionSheet alloc] initWithTitle:nil
+                                delegate:self
+                       cancelButtonTitle:@"Cancel"
+                  destructiveButtonTitle:nil
+                       otherButtonTitles:@"Camera",@"Photo Gallery",nil];
+    self.actionSheet.tag = 1;
+    [self.actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+
+#pragma mark - Additional Notifications
+
 - (void) registerForKeyboardNotifications {
     
     NSNotificationCenter *notificationCenterObject = [NSNotificationCenter defaultCenter];
     [notificationCenterObject addObserver:self
            selector:@selector(keyboardWillShow:)
-               name:UIKeyboardWillShowNotification
+               name:UIKeyboardDidShowNotification
              object:nil];
     
     [notificationCenterObject addObserver:self
@@ -177,9 +229,17 @@
     NSDictionary *keyboardInfo = [notification userInfo];
     CGSize keyboardSize = [[keyboardInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(AS_ScrollView_Edge_Insets_Equals_Nil, AS_ScrollView_Edge_Insets_Equals_Nil, keyboardSize.height , AS_ScrollView_Edge_Insets_Equals_Nil);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(AS_ScrollView_Edge_Insets_Equals_Nil, AS_ScrollView_Edge_Insets_Equals_Nil, keyboardSize.height, AS_ScrollView_Edge_Insets_Equals_Nil);
+    
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
+        
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= keyboardSize.height;
+    if (!CGRectContainsPoint(aRect, self.actionField.frame.origin)) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.actionField.frame.origin.y + keyboardSize.height);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
 }
 
 
@@ -192,31 +252,21 @@
 }
 
 
-- (BOOL)isValidEmailAdress:(NSString*) emailAdress
-{
-    NSString *emailRegExFormat = AS_Regular_Expension_Format_For_Email;
-    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegExFormat];
-    
-    return [emailPredicate evaluateWithObject:emailAdress];
-}
-
-
-- (void) cleanAllFields {
-    self.emailField.text    = nil;
-    self.subjectsField.text = nil;
-    self.bodyTextView.text  = nil;
-    [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController]forState:UIControlStateNormal];
-    self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Affirmatively;
-}
-
-
 #pragma mark - Actions
 
 - (IBAction)actionAddPhoto:(UIButton *)sender {
     [self setupAlertCtrl];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        
+        [self setAndShowActionSheetForAddNewImage];
+        
+    }else {
+        
     [self presentViewController:self.alertController
                        animated:YES
                      completion:nil];
+    }
 }
 
 
@@ -243,7 +293,10 @@
                 [mailComposeController addAttachmentData:imageData mimeType:AS_MIME_Type_Is_Image_PNG fileName:AS_Image_File_Name_Assosiated_With_The_Data];
             }
             
-            [self presentViewController:mailComposeController animated:YES completion:nil];
+           // dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:mailComposeController animated:YES completion:nil];
+           // });
+            //[self presentViewController:mailComposeController animated:YES completion:nil];
             
         }else{
             //...if email NOT valid
@@ -306,7 +359,8 @@
         
         [self cleanAllFields];
         
-    }else if (result == MFMailComposeResultCancelled || result == MFMailComposeResultSaved) {
+    }else if (result == MFMailComposeResultCancelled ||
+              result == MFMailComposeResultSaved) {
         
         [self cleanAllFields];
     }
@@ -316,6 +370,18 @@
 
 
 #pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    self.actionField = textField;
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    self.actionField = nil;
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
@@ -363,6 +429,23 @@
     [self.addPhotoButton setBackgroundImage:imageFromData forState:UIControlStateNormal];
     self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Negatively;
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *sheetTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+
+    if ([sheetTitle isEqualToString:@"Camera"]) {
+        
+        [self handleCamera];
+        
+    }else if ([sheetTitle isEqualToString:@"Photo Gallery"]) {
+        
+        [self handleImageGallery];
+    }
 }
 
 @end

@@ -85,6 +85,8 @@ extern float const AS_Button_Title_Label_Opacity_Affirmatively;
 extern float const AS_ScrollView_Edge_Insets_Equals_Nil;
 
 
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 
 @interface ASProjectConstants : NSObject
 

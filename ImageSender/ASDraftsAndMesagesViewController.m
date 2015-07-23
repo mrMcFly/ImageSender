@@ -13,12 +13,21 @@
 #import "AppDelegate.h"
 #import "ASProjectConstants.h"
 
-@interface ASDraftsAndMesagesViewController ()  <UITableViewDataSource, UITableViewDelegate,NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
+typedef enum {
+    ASAlertTypeDeleteCell,
+    ASAlertTypeRemoveAll
+}ASAlertType;
+
+@interface ASDraftsAndMesagesViewController ()  <UITableViewDataSource, UITableViewDelegate,NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate,UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIAlertController *alertController;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) NSIndexPath *indexPathForCell;
+
+//CoreData
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) UIAlertController *alertController;
 
 @end
 
@@ -28,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title =AS_NavigationItem_Title_For_DraftsAndMessagesViewController;
+    self.navigationItem.title = AS_NavigationItem_Title_For_DraftsAndMessagesViewController;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     UIBarButtonItem *addNewMessageButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddNewMessage)];
@@ -91,46 +100,78 @@
 
 - (IBAction)actionRemoveAll:(UIButton*)sender {
     
-    NSString *alertMessageText = nil;
-    
     if (![self isRipositoryHaveSavedMessages]) {
         
-        alertMessageText = AS_Alert_Message_Text_For_Empty_Message_Storage;
-        
-        self.alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:alertMessageText
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [self.alertController addAction:okAction];
-        [self presentViewController:self.alertController animated:YES completion:nil];
-        
-    }else{
-        
-        alertMessageText = AS_Alert_Message_Text_For_Remove_All_Messages;
-        
-        self.alertController = [UIAlertController alertControllerWithTitle:nil message:alertMessageText preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_No style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        
-        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Yes style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
             
-            NSArray *fetchedObjectsArray = self.fetchedResultsController.fetchedObjects;
-            for (NSManagedObject *managedObject in fetchedObjectsArray) {
-                [self.managedObjectContext deleteObject:managedObject];
-            }
-            [self.managedObjectContext save:nil];
-            [self.fetchedResultsController performFetch:nil];
-            [self.tableView reloadData];
-        }];
+            [[[UIAlertView alloc]initWithTitle:nil
+                                       message:AS_Alert_Message_Text_For_Empty_Message_Storage
+                                      delegate:self
+                             cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Ok
+                             otherButtonTitles:nil]show];
+            
+            //self.actionSheet.tag = ASAlertTypeRemoveAll;
+            
+        }else {
+            
+            self.alertController =
+            [UIAlertController alertControllerWithTitle:nil
+                                                message:AS_Alert_Message_Text_For_Empty_Message_Storage
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction =
+            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                                       
+                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+            
+            [self.alertController addAction:okAction];
+            [self presentViewController:self.alertController animated:YES completion:nil];
+        }
         
-        [self.alertController addAction:yesAction];
-        [self.alertController addAction:noAction];
+    }else if ([self isRipositoryHaveSavedMessages]){
         
-        [self presentViewController:self.alertController animated:YES completion:nil];
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+            
+            [[[UIAlertView alloc]initWithTitle:nil
+                                       message:AS_Alert_Message_Text_For_Remove_All_Messages
+                                      delegate:self
+                             cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Yes
+                             otherButtonTitles:AS_Alert_Action_Text_For_Confirm_No
+              ,nil]show];
+            
+            self.actionSheet.tag = ASAlertTypeRemoveAll;
+            
+        }else{
+            
+            self.alertController =
+            [UIAlertController alertControllerWithTitle:nil
+                                                message:AS_Alert_Message_Text_For_Remove_All_Messages
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *noAction =
+            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_No
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                                       
+                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+            
+            UIAlertAction *yesAction =
+            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Yes
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                                       
+                                       [self deleteAllDataObjects];
+                                   }];
+            
+            [self.alertController addAction:yesAction];
+            [self.alertController addAction:noAction];
+            
+            [self presentViewController:self.alertController animated:YES completion:nil];
+        }
     }
 }
 
@@ -200,29 +241,90 @@
     
     if (longGesture.state == UIGestureRecognizerStateBegan) {
         CGPoint longTapPoint = [longGesture locationInView:self.tableView];
-        NSIndexPath *indexPathForCell = [self.tableView indexPathForRowAtPoint:longTapPoint];
+        self.indexPathForCell = [self.tableView indexPathForRowAtPoint:longTapPoint];
         
-        NSString *removeMessageText = AS_Alert_Message_Text_For_Remove_Certain_Message;
-
-        self.alertController = [UIAlertController alertControllerWithTitle:nil message:removeMessageText preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *noAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_No style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        
-        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Yes style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-            [self.managedObjectContext deleteObject:[self.fetchedResultsController.fetchedObjects objectAtIndex:indexPathForCell.row]];
-            [self.managedObjectContext save:nil];
-            [self.fetchedResultsController performFetch:nil];
-            [self.tableView reloadData];
-        }];
-        [self.alertController addAction:noAction];
-        [self.alertController addAction:yesAction];
-        
-        [self presentViewController:self.alertController animated:YES completion:nil];
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+            
+            [[[UIAlertView alloc]initWithTitle:AS_Alert_Action_Text_For_Confirm_No
+                                       message:AS_Alert_Message_Text_For_Remove_Certain_Message
+                                      delegate:self
+                             cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_No
+                             otherButtonTitles:AS_Alert_Action_Text_For_Confirm_Yes, nil]show];
+            
+            self.actionSheet.tag = ASAlertTypeDeleteCell;
+            
+        }else {
+            
+            self.alertController =
+            [UIAlertController alertControllerWithTitle:nil
+                                                message:AS_Alert_Message_Text_For_Remove_Certain_Message
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *noAction =
+            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_No
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                                       
+                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+            
+            UIAlertAction *yesAction =
+            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Yes
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                                       
+                                       [self deleteDefiniteDataObject];
+                                   }];
+            [self.alertController addAction:noAction];
+            [self.alertController addAction:yesAction];
+            
+            [self presentViewController:self.alertController animated:YES completion:nil];
+        }
     }
 }
 
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *alertTitle = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if (alertView.tag == ASAlertTypeDeleteCell) {
+        
+        if ([alertTitle isEqualToString:@"Yes"]) {
+            [self deleteDefiniteDataObject];
+            
+    }else if (alertView.tag == ASAlertTypeRemoveAll){
+            
+        if ([alertTitle isEqualToString:@"Yes"]) {
+                [self deleteAllDataObjects];
+            }
+        }
+    }
+}
+
+
+#pragma mark - Data Object sending avay
+
+- (void) deleteDefiniteDataObject {
+    
+    [self.managedObjectContext deleteObject:[self.fetchedResultsController.fetchedObjects objectAtIndex:self.indexPathForCell.row]];
+    [self.managedObjectContext save:nil];
+    [self.fetchedResultsController performFetch:nil];
+    [self.tableView reloadData];
+}
+
+
+- (void) deleteAllDataObjects {
+    
+    NSArray *fetchedObjectsArray = self.fetchedResultsController.fetchedObjects;
+    for (NSManagedObject *managedObject in fetchedObjectsArray) {
+        [self.managedObjectContext deleteObject:managedObject];
+    }
+    [self.managedObjectContext save:nil];
+    [self.fetchedResultsController performFetch:nil];
+    [self.tableView reloadData];
+}
 
 @end
