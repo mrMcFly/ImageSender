@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SSe-iA-hwb">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -39,6 +40,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ugv-le-KMG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHI-xb-tQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SSe-iA-hwb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WrS-Pl-pRU">
@@ -54,7 +56,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Fnk-jg-pFH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pHI-xb-tQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="443" y="387"/>
         </scene>
@@ -185,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hor-mH-LXr">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hor-mH-LXr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOy-9v-AzV" userLabel="Content View">
@@ -209,7 +210,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-qK-fvx" userLabel="E-mail Label">
-                                                <rect key="frame" x="20" y="162" width="44" height="18"/>
+                                                <rect key="frame" x="20" y="162" width="43.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.5490196078431373" green="0.59999999999999998" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -245,6 +246,9 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHD-4r-ttz" userLabel="Body TextView">
                                                 <rect key="frame" x="20" y="338" width="560" height="187"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="187" id="xVV-ZB-UFO"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 <connections>
@@ -253,6 +257,9 @@
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtT-mt-VJa" userLabel="Share Button">
                                                 <rect key="frame" x="20" y="542" width="560" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="tOw-y0-9u0"/>
+                                                </constraints>
                                                 <state key="normal" title="Share" backgroundImage="share">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +275,6 @@
                                             <constraint firstItem="HtT-mt-VJa" firstAttribute="top" secondItem="XHD-4r-ttz" secondAttribute="bottom" constant="17" id="F79-OC-8nc"/>
                                             <constraint firstItem="3Nf-gX-8P6" firstAttribute="top" secondItem="6Na-2y-RlZ" secondAttribute="bottom" constant="16" id="L4h-dg-HlU"/>
                                             <constraint firstItem="6Na-2y-RlZ" firstAttribute="top" secondItem="7Th-qK-fvx" secondAttribute="bottom" constant="8.5" id="Pfw-n2-YHd"/>
-                                            <constraint firstAttribute="bottom" secondItem="XHD-4r-ttz" secondAttribute="bottom" constant="75" id="RhX-fT-c9y"/>
                                             <constraint firstItem="6Na-2y-RlZ" firstAttribute="leading" secondItem="AOy-9v-AzV" secondAttribute="leading" constant="20" symbolic="YES" id="Rsz-5B-Op6"/>
                                             <constraint firstAttribute="trailing" secondItem="bKE-VK-pZt" secondAttribute="trailing" constant="20" symbolic="YES" id="UWO-rc-trE"/>
                                             <constraint firstAttribute="bottom" secondItem="HtT-mt-VJa" secondAttribute="bottom" constant="20" id="Zuv-Gy-JUX"/>

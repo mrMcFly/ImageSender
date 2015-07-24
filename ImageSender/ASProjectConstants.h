@@ -81,7 +81,7 @@ extern double const AS_Minimum_Time_Press_Duration_For_Delete_Cell;
 extern float const AS_Button_Title_Label_Opacity_Negatively;
 extern float const AS_Button_Title_Label_Opacity_Affirmatively;
 
-//ScrollView edge insets
+//ScrollView edge insets 
 extern float const AS_ScrollView_Edge_Insets_Equals_Nil;
 
 
