@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		087143721B300A93007578E2 /* ASProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 087143711B300A93007578E2 /* ASProjectConstants.m */; };
 		087143CD1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 087143CC1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m */; };
 		089649F01B32AD3E0002EC2F /* LoadingScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 089649ED1B32AD3E0002EC2F /* LoadingScreen@1x.png */; };
 		089649F11B32AD3E0002EC2F /* LoadingScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 089649EE1B32AD3E0002EC2F /* LoadingScreen@2x.png */; };
@@ -34,15 +33,20 @@
 		08964A1B1B32AE240002EC2F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08964A181B32AE240002EC2F /* BackButton@2x.png */; };
 		08964A1C1B32AE240002EC2F /* BackButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08964A191B32AE240002EC2F /* BackButton@3x.png */; };
 		194CC94C1B18E82600FFBE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC94B1B18E82600FFBE80 /* main.m */; };
-		194CC94F1B18E82600FFBE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC94E1B18E82600FFBE80 /* AppDelegate.m */; };
 		194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9501B18E82600FFBE80 /* ImageSender.xcdatamodeld */; };
-		194CC9551B18E82600FFBE80 /* ASLoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9541B18E82600FFBE80 /* ASLoadingScreenViewController.m */; };
 		194CC9691B18E82600FFBE80 /* ImageSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 194CC9681B18E82600FFBE80 /* ImageSenderTests.m */; };
-		195A6CF31B19710300D0254F /* ASDraftsAndMesagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */; };
-		195A6CF61B1971C800D0254F /* ASShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CF51B1971C800D0254F /* ASShareViewController.m */; };
 		195A6CF91B1973B300D0254F /* ASMessageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */; };
 		195A6CFD1B19A49400D0254F /* ASMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CFC1B19A49400D0254F /* ASMessage.m */; };
 		196100EE1B625D1F00AF63AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194CC9561B18E82600FFBE80 /* Main.storyboard */; };
+		19940F5A1B661A74007F0205 /* ASProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F501B661A74007F0205 /* ASProjectConstants.m */; };
+		19940F5B1B661A74007F0205 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F531B661A74007F0205 /* AppDelegate.m */; };
+		19940F5C1B661A74007F0205 /* ASDraftsAndMesagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F551B661A74007F0205 /* ASDraftsAndMesagesViewController.m */; };
+		19940F5D1B661A74007F0205 /* ASLoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F571B661A74007F0205 /* ASLoadingScreenViewController.m */; };
+		19940F5E1B661A74007F0205 /* ASShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F591B661A74007F0205 /* ASShareViewController.m */; };
+		19940F681B661A9A007F0205 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F611B661A9A007F0205 /* AppDelegate.m */; };
+		19940F691B661A9A007F0205 /* ASDraftsAndMesagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F631B661A9A007F0205 /* ASDraftsAndMesagesViewController.m */; };
+		19940F6A1B661A9A007F0205 /* ASLoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F651B661A9A007F0205 /* ASLoadingScreenViewController.m */; };
+		19940F6B1B661A9A007F0205 /* ASShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F671B661A9A007F0205 /* ASShareViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		087143701B300A93007578E2 /* ASProjectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProjectConstants.h; sourceTree = "<group>"; };
-		087143711B300A93007578E2 /* ASProjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProjectConstants.m; sourceTree = "<group>"; };
 		087143CB1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+DefiniteDelayInSeconds.h"; sourceTree = "<group>"; };
 		087143CC1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+DefiniteDelayInSeconds.m"; sourceTree = "<group>"; };
 		089649ED1B32AD3E0002EC2F /* LoadingScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingScreen@1x.png"; sourceTree = "<group>"; };
@@ -87,25 +89,35 @@
 		194CC9461B18E82600FFBE80 /* ImageSender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194CC94A1B18E82600FFBE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		194CC94B1B18E82600FFBE80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		194CC94D1B18E82600FFBE80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		194CC94E1B18E82600FFBE80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		194CC9511B18E82600FFBE80 /* ImageSender.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageSender.xcdatamodel; sourceTree = "<group>"; };
-		194CC9531B18E82600FFBE80 /* ASLoadingScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLoadingScreenViewController.h; sourceTree = "<group>"; };
-		194CC9541B18E82600FFBE80 /* ASLoadingScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASLoadingScreenViewController.m; sourceTree = "<group>"; };
 		194CC9571B18E82600FFBE80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		194CC9591B18E82600FFBE80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		194CC95C1B18E82600FFBE80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		194CC9621B18E82600FFBE80 /* ImageSenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageSenderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		194CC9671B18E82600FFBE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		194CC9681B18E82600FFBE80 /* ImageSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageSenderTests.m; sourceTree = "<group>"; };
-		195A6CF11B19710300D0254F /* ASDraftsAndMesagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDraftsAndMesagesViewController.h; sourceTree = "<group>"; };
-		195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDraftsAndMesagesViewController.m; sourceTree = "<group>"; };
-		195A6CF41B1971C800D0254F /* ASShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASShareViewController.h; sourceTree = "<group>"; };
-		195A6CF51B1971C800D0254F /* ASShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASShareViewController.m; sourceTree = "<group>"; };
 		195A6CF71B1973B300D0254F /* ASMessageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMessageInfoCell.h; sourceTree = "<group>"; };
 		195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMessageInfoCell.m; sourceTree = "<group>"; };
 		195A6CFB1B19A49400D0254F /* ASMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMessage.h; sourceTree = "<group>"; };
 		195A6CFC1B19A49400D0254F /* ASMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMessage.m; sourceTree = "<group>"; };
+		19940F4F1B661A74007F0205 /* ASProjectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProjectConstants.h; sourceTree = "<group>"; };
+		19940F501B661A74007F0205 /* ASProjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProjectConstants.m; sourceTree = "<group>"; };
+		19940F521B661A74007F0205 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19940F531B661A74007F0205 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		19940F541B661A74007F0205 /* ASDraftsAndMesagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDraftsAndMesagesViewController.h; sourceTree = "<group>"; };
+		19940F551B661A74007F0205 /* ASDraftsAndMesagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDraftsAndMesagesViewController.m; sourceTree = "<group>"; };
+		19940F561B661A74007F0205 /* ASLoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLoadingScreenViewController.h; sourceTree = "<group>"; };
+		19940F571B661A74007F0205 /* ASLoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLoadingScreenViewController.m; sourceTree = "<group>"; };
+		19940F581B661A74007F0205 /* ASShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASShareViewController.h; sourceTree = "<group>"; };
+		19940F591B661A74007F0205 /* ASShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASShareViewController.m; sourceTree = "<group>"; };
+		19940F601B661A9A007F0205 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19940F611B661A9A007F0205 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		19940F621B661A9A007F0205 /* ASDraftsAndMesagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDraftsAndMesagesViewController.h; sourceTree = "<group>"; };
+		19940F631B661A9A007F0205 /* ASDraftsAndMesagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDraftsAndMesagesViewController.m; sourceTree = "<group>"; };
+		19940F641B661A9A007F0205 /* ASLoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLoadingScreenViewController.h; sourceTree = "<group>"; };
+		19940F651B661A9A007F0205 /* ASLoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLoadingScreenViewController.m; sourceTree = "<group>"; };
+		19940F661B661A9A007F0205 /* ASShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASShareViewController.h; sourceTree = "<group>"; };
+		19940F671B661A9A007F0205 /* ASShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASShareViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,16 +231,8 @@
 		194CC9481B18E82600FFBE80 /* ImageSender */ = {
 			isa = PBXGroup;
 			children = (
-				194CC94D1B18E82600FFBE80 /* AppDelegate.h */,
-				194CC94E1B18E82600FFBE80 /* AppDelegate.m */,
-				194CC9531B18E82600FFBE80 /* ASLoadingScreenViewController.h */,
-				194CC9541B18E82600FFBE80 /* ASLoadingScreenViewController.m */,
-				195A6CF11B19710300D0254F /* ASDraftsAndMesagesViewController.h */,
-				195A6CF21B19710300D0254F /* ASDraftsAndMesagesViewController.m */,
-				195A6CF41B1971C800D0254F /* ASShareViewController.h */,
-				195A6CF51B1971C800D0254F /* ASShareViewController.m */,
-				087143701B300A93007578E2 /* ASProjectConstants.h */,
-				087143711B300A93007578E2 /* ASProjectConstants.m */,
+				19940F5F1B661A9A007F0205 /* ViewControllers */,
+				19940F4E1B661A74007F0205 /* Constants */,
 				087144011B302F42007578E2 /* Category */,
 				195A6CFA1B198B1200D0254F /* Cell Custom */,
 				195A6CF01B196EF500D0254F /* Model */,
@@ -284,6 +288,46 @@
 				195A6CF81B1973B300D0254F /* ASMessageInfoCell.m */,
 			);
 			path = "Cell Custom";
+			sourceTree = "<group>";
+		};
+		19940F4E1B661A74007F0205 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				19940F4F1B661A74007F0205 /* ASProjectConstants.h */,
+				19940F501B661A74007F0205 /* ASProjectConstants.m */,
+				19940F511B661A74007F0205 /* ViewControllers */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		19940F511B661A74007F0205 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19940F521B661A74007F0205 /* AppDelegate.h */,
+				19940F531B661A74007F0205 /* AppDelegate.m */,
+				19940F541B661A74007F0205 /* ASDraftsAndMesagesViewController.h */,
+				19940F551B661A74007F0205 /* ASDraftsAndMesagesViewController.m */,
+				19940F561B661A74007F0205 /* ASLoadingScreenViewController.h */,
+				19940F571B661A74007F0205 /* ASLoadingScreenViewController.m */,
+				19940F581B661A74007F0205 /* ASShareViewController.h */,
+				19940F591B661A74007F0205 /* ASShareViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		19940F5F1B661A9A007F0205 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19940F601B661A9A007F0205 /* AppDelegate.h */,
+				19940F611B661A9A007F0205 /* AppDelegate.m */,
+				19940F621B661A9A007F0205 /* ASDraftsAndMesagesViewController.h */,
+				19940F631B661A9A007F0205 /* ASDraftsAndMesagesViewController.m */,
+				19940F641B661A9A007F0205 /* ASLoadingScreenViewController.h */,
+				19940F651B661A9A007F0205 /* ASLoadingScreenViewController.m */,
+				19940F661B661A9A007F0205 /* ASShareViewController.h */,
+				19940F671B661A9A007F0205 /* ASShareViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,16 +452,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19940F681B661A9A007F0205 /* AppDelegate.m in Sources */,
 				087143CD1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m in Sources */,
-				194CC94F1B18E82600FFBE80 /* AppDelegate.m in Sources */,
+				19940F5A1B661A74007F0205 /* ASProjectConstants.m in Sources */,
+				19940F5E1B661A74007F0205 /* ASShareViewController.m in Sources */,
+				19940F6A1B661A9A007F0205 /* ASLoadingScreenViewController.m in Sources */,
+				19940F691B661A9A007F0205 /* ASDraftsAndMesagesViewController.m in Sources */,
+				19940F5D1B661A74007F0205 /* ASLoadingScreenViewController.m in Sources */,
 				194CC94C1B18E82600FFBE80 /* main.m in Sources */,
-				194CC9551B18E82600FFBE80 /* ASLoadingScreenViewController.m in Sources */,
 				195A6CF91B1973B300D0254F /* ASMessageInfoCell.m in Sources */,
-				087143721B300A93007578E2 /* ASProjectConstants.m in Sources */,
-				195A6CF61B1971C800D0254F /* ASShareViewController.m in Sources */,
-				195A6CF31B19710300D0254F /* ASDraftsAndMesagesViewController.m in Sources */,
+				19940F5C1B661A74007F0205 /* ASDraftsAndMesagesViewController.m in Sources */,
+				19940F6B1B661A9A007F0205 /* ASShareViewController.m in Sources */,
 				194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */,
 				195A6CFD1B19A49400D0254F /* ASMessage.m in Sources */,
+				19940F5B1B661A74007F0205 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

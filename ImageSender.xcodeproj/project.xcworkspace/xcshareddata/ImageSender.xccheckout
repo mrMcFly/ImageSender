@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C47E853B-A1CE-4B35-AB1F-27BD3583BC4D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>ImageSender</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7ACD17D1CC3B643FB7298DAED2AB9904A4150E52</key>
 		<string>https://github.com/mrMcFly/ImageSender.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ImageSender.xcodeproj/project.xcworkspace</string>
+	<string>ImageSender.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7ACD17D1CC3B643FB7298DAED2AB9904A4150E52</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>7ACD17D1CC3B643FB7298DAED2AB9904A4150E52</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ImageSender%202</string>
+			<string>ImageSender</string>
 		</dict>
 	</array>
 </dict>
