@@ -29,6 +29,8 @@
 @property (strong, nonatomic) UITextField *actionField;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 
+@property (strong, nonatomic) NSData *chosenImageData;
+
 @end
 
 
@@ -175,13 +177,14 @@
 
 - (void) cleanAllFields {
     
-    //dispatch_async(dispatch_get_main_queue(), ^{
+    //without this code (dispatch_async) - crash "Only run on the main thread!"
+    dispatch_async(dispatch_get_main_queue(), ^{
         self.emailField.text    = nil;
         self.subjectsField.text = nil;
         self.bodyTextView.text  = nil;
         [self.addPhotoButton setBackgroundImage:[UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController]forState:UIControlStateNormal];
         self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Affirmatively;
-   // });
+    });
 }
 
 
@@ -199,9 +202,9 @@
     self.actionSheet =
     [[UIActionSheet alloc] initWithTitle:nil
                                 delegate:self
-                       cancelButtonTitle:@"Cancel"
+                       cancelButtonTitle:AS_Alert_Title_Text_For_Cancel
                   destructiveButtonTitle:nil
-                       otherButtonTitles:@"Camera",@"Photo Gallery",nil];
+                       otherButtonTitles:AS_Alert_Title_Text_For_Camera,AS_Alert_Title_Text_For_Photo_Gallery,nil];
     self.actionSheet.tag = 1;
     [self.actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -229,7 +232,11 @@
     NSDictionary *keyboardInfo = [notification userInfo];
     CGSize keyboardSize = [[keyboardInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(AS_ScrollView_Edge_Insets_Equals_Nil, AS_ScrollView_Edge_Insets_Equals_Nil, keyboardSize.height, AS_ScrollView_Edge_Insets_Equals_Nil);
+    UIEdgeInsets contentInsets =
+    UIEdgeInsetsMake(AS_ScrollView_Edge_Insets_Equals_Nil,
+                     AS_ScrollView_Edge_Insets_Equals_Nil,
+                     keyboardSize.height,
+                     AS_ScrollView_Edge_Insets_Equals_Nil);
     
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
@@ -283,20 +290,12 @@
             [mailComposeController setToRecipients:@[self.emailField.text]];
             [mailComposeController setSubject:self.subjectsField.text];
             [mailComposeController setMessageBody:self.bodyTextView.text isHTML:NO];
-            
-            UIImage *defaultImage = [UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController];
-  
-            //Define attach or not (image can be default for button) image to email message.
-            if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
-                
-                NSData *imageData = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
-                [mailComposeController addAttachmentData:imageData mimeType:AS_MIME_Type_Is_Image_PNG fileName:AS_Image_File_Name_Assosiated_With_The_Data];
+        
+            if (self.chosenImageData) {
+                [mailComposeController addAttachmentData:self.chosenImageData mimeType:AS_MIME_Type_Is_Image_PNG fileName:AS_Image_File_Name_Assosiated_With_The_Data];
             }
             
-           // dispatch_async(dispatch_get_main_queue(), ^{
                 [self presentViewController:mailComposeController animated:YES completion:nil];
-           // });
-            //[self presentViewController:mailComposeController animated:YES completion:nil];
             
         }else{
             //...if email NOT valid
@@ -346,15 +345,8 @@
         modelMessage.email   = self.emailField.text;
         modelMessage.subject = self.subjectsField.text;
         modelMessage.body    = self.bodyTextView.text;
+        modelMessage.image   = self.chosenImageData;
         
-        UIImage *defaultImage = [UIImage imageNamed:AS_Image_Default_Name_For_ShareViewController];
-        
-        //Save to message if image is not default background for button.
-        if (![self.addPhotoButton.currentBackgroundImage isEqual:defaultImage]) {
-            modelMessage.image = UIImagePNGRepresentation(self.addPhotoButton.currentBackgroundImage);
-        }else{
-            modelMessage.image = nil;
-        }
         [self.managedObjectContext save:nil];
         
         [self cleanAllFields];
@@ -394,6 +386,7 @@
         }
         
     }else if ([textField isEqual:self.subjectsField]){
+        [textField resignFirstResponder];
         [self.bodyTextView becomeFirstResponder];
     }
     return NO;
@@ -425,9 +418,12 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     NSData *dataImage = UIImagePNGRepresentation([info objectForKey:AS_Image_PNG_Representation_Key_Name]);
+    
     UIImage *imageFromData = [[UIImage alloc]initWithData:dataImage];
     [self.addPhotoButton setBackgroundImage:imageFromData forState:UIControlStateNormal];
     self.addPhotoButton.titleLabel.layer.opacity = AS_Button_Title_Label_Opacity_Negatively;
+
+    self.chosenImageData = dataImage;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -438,11 +434,11 @@
     
     NSString *sheetTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
 
-    if ([sheetTitle isEqualToString:@"Camera"]) {
+    if ([sheetTitle isEqualToString:AS_Alert_Title_Text_For_Camera]) {
         
         [self handleCamera];
         
-    }else if ([sheetTitle isEqualToString:@"Photo Gallery"]) {
+    }else if ([sheetTitle isEqualToString:AS_Alert_Title_Text_For_Photo_Gallery]) {
         
         [self handleImageGallery];
     }

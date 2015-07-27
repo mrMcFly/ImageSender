@@ -129,7 +129,6 @@
 		087143881B301F67007578E2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				089649EC1B32AC890002EC2F /* New Group */,
 				087143C71B301FD9007578E2 /* Buttons */,
 				087143C81B301FFD007578E2 /* AppIcon */,
 				087143C91B30200E007578E2 /* LoadingScreen */,
@@ -197,13 +196,6 @@
 				087143CC1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		089649EC1B32AC890002EC2F /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		194CC93D1B18E82600FFBE80 = {

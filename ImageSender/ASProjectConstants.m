@@ -75,7 +75,7 @@ NSString* const AS_MIME_Type_Is_Image_PNG = @"image/png";
 //-----------------------------------------------------------------------------------
 
 //Press time duration
-double const AS_Minimum_Time_Press_Duration_For_Delete_Cell = 2.0;
+double const AS_Minimum_Time_Press_Duration_For_Delete_Cell = 1.0;
 
 //Button label opacity
 float const AS_Button_Title_Label_Opacity_Negatively = 0.0f;

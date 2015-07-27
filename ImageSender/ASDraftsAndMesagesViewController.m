@@ -42,8 +42,6 @@ typedef enum {
     
     UIBarButtonItem *addNewMessageButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddNewMessage)];
     
-    //[addButton setBackgroundImage:[UIImage imageNamed:@"AddMessageButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
     self.navigationItem.rightBarButtonItem = addNewMessageButton;
 
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
@@ -109,9 +107,7 @@ typedef enum {
                                       delegate:self
                              cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Ok
                              otherButtonTitles:nil]show];
-            
-            //self.actionSheet.tag = ASAlertTypeRemoveAll;
-            
+                        
         }else {
             
             self.alertController =
@@ -292,12 +288,12 @@ typedef enum {
     
     if (alertView.tag == ASAlertTypeDeleteCell) {
         
-        if ([alertTitle isEqualToString:@"Yes"]) {
+        if ([alertTitle isEqualToString:AS_Alert_Action_Text_For_Confirm_Yes]) {
             [self deleteDefiniteDataObject];
             
     }else if (alertView.tag == ASAlertTypeRemoveAll){
             
-        if ([alertTitle isEqualToString:@"Yes"]) {
+        if ([alertTitle isEqualToString:AS_Alert_Action_Text_For_Confirm_Yes]) {
                 [self deleteAllDataObjects];
             }
         }
