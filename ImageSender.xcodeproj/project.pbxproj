@@ -39,10 +39,6 @@
 		195A6CFD1B19A49400D0254F /* ASMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A6CFC1B19A49400D0254F /* ASMessage.m */; };
 		196100EE1B625D1F00AF63AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194CC9561B18E82600FFBE80 /* Main.storyboard */; };
 		19940F5A1B661A74007F0205 /* ASProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F501B661A74007F0205 /* ASProjectConstants.m */; };
-		19940F5B1B661A74007F0205 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F531B661A74007F0205 /* AppDelegate.m */; };
-		19940F5C1B661A74007F0205 /* ASDraftsAndMesagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F551B661A74007F0205 /* ASDraftsAndMesagesViewController.m */; };
-		19940F5D1B661A74007F0205 /* ASLoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F571B661A74007F0205 /* ASLoadingScreenViewController.m */; };
-		19940F5E1B661A74007F0205 /* ASShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F591B661A74007F0205 /* ASShareViewController.m */; };
 		19940F681B661A9A007F0205 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F611B661A9A007F0205 /* AppDelegate.m */; };
 		19940F691B661A9A007F0205 /* ASDraftsAndMesagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F631B661A9A007F0205 /* ASDraftsAndMesagesViewController.m */; };
 		19940F6A1B661A9A007F0205 /* ASLoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19940F651B661A9A007F0205 /* ASLoadingScreenViewController.m */; };
@@ -455,17 +451,13 @@
 				19940F681B661A9A007F0205 /* AppDelegate.m in Sources */,
 				087143CD1B30221D007578E2 /* NSNumber+DefiniteDelayInSeconds.m in Sources */,
 				19940F5A1B661A74007F0205 /* ASProjectConstants.m in Sources */,
-				19940F5E1B661A74007F0205 /* ASShareViewController.m in Sources */,
 				19940F6A1B661A9A007F0205 /* ASLoadingScreenViewController.m in Sources */,
 				19940F691B661A9A007F0205 /* ASDraftsAndMesagesViewController.m in Sources */,
-				19940F5D1B661A74007F0205 /* ASLoadingScreenViewController.m in Sources */,
 				194CC94C1B18E82600FFBE80 /* main.m in Sources */,
 				195A6CF91B1973B300D0254F /* ASMessageInfoCell.m in Sources */,
-				19940F5C1B661A74007F0205 /* ASDraftsAndMesagesViewController.m in Sources */,
 				19940F6B1B661A9A007F0205 /* ASShareViewController.m in Sources */,
 				194CC9521B18E82600FFBE80 /* ImageSender.xcdatamodeld in Sources */,
 				195A6CFD1B19A49400D0254F /* ASMessage.m in Sources */,
-				19940F5B1B661A74007F0205 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
