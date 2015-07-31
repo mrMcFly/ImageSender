@@ -1,4 +1,4 @@
-# ImageSenderApp
+# ImageSender
 
 This functional allows User to send images from Camera or Photo Gallery by e-mail. Application has the following structure: -> Loading Screen -> Drafts and Sent Mesages -> Share.
 
