@@ -299,22 +299,60 @@
             
         }else{
             //...if email NOT valid
-            self.alertController =
-            [UIAlertController alertControllerWithTitle:AS_Alert_Title_Text_For_Email_Warning
-                                                message:AS_Alert_Message_Text_For_Not_Valid_Email
-                                         preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *okAction =
-            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
-                                     style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action) {
-                                       [self dismissViewControllerAnimated:YES completion:nil];
-                                   }];
-            [self.alertController addAction:okAction];
-            self.isReturnFromValidationEmailError = YES;
-            [self.emailField becomeFirstResponder];
             
-            [self presentViewController:self.alertController animated:YES completion:nil];
+            if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+                
+//                self.isReturnFromValidationEmailError = YES;
+//                [self.emailField becomeFirstResponder];
+                //alertView
+                [[[UIAlertView alloc]initWithTitle:AS_Alert_Title_Text_For_Email_Warning
+                                           message:AS_Alert_Message_Text_For_Not_Valid_Email
+                                          delegate:self
+                                 cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Ok
+                                 otherButtonTitles:nil]show];
+//                self.isReturnFromValidationEmailError = YES;
+//                [self.emailField becomeFirstResponder];
+                
+                
+            }else {
+                
+                self.alertController =
+                [UIAlertController alertControllerWithTitle:AS_Alert_Title_Text_For_Email_Warning
+                                                    message:AS_Alert_Message_Text_For_Not_Valid_Email
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction =
+                [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
+                                         style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction *action) {
+                                           [self dismissViewControllerAnimated:YES completion:nil];
+                                       }];
+                [self.alertController addAction:okAction];
+                self.isReturnFromValidationEmailError = YES;
+                [self.emailField becomeFirstResponder];
+                
+                [self presentViewController:self.alertController animated:YES completion:nil];
+            }
+
+            
+            
+//            self.alertController =
+//            [UIAlertController alertControllerWithTitle:AS_Alert_Title_Text_For_Email_Warning
+//                                                message:AS_Alert_Message_Text_For_Not_Valid_Email
+//                                         preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction *okAction =
+//            [UIAlertAction actionWithTitle:AS_Alert_Action_Text_For_Confirm_Ok
+//                                     style:UIAlertActionStyleDefault
+//                                   handler:^(UIAlertAction *action) {
+//                                       [self dismissViewControllerAnimated:YES completion:nil];
+//                                   }];
+//            [self.alertController addAction:okAction];
+//            self.isReturnFromValidationEmailError = YES;
+//            [self.emailField becomeFirstResponder];
+//            
+//            [self presentViewController:self.alertController animated:YES completion:nil];
         }
     }else{
         //If device can't send email.
@@ -356,6 +394,9 @@
         
         [self cleanAllFields];
     }
+    
+    [self.scrollView setContentOffset:CGPointMake(0, 0)]
+    ;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -441,6 +482,16 @@
     }else if ([sheetTitle isEqualToString:AS_Alert_Title_Text_For_Photo_Gallery]) {
         
         [self handleImageGallery];
+    }
+}
+
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+ 
+    if (buttonIndex == 0) {
+        self.isReturnFromValidationEmailError = YES;
+        [self.emailField becomeFirstResponder];
     }
 }
 

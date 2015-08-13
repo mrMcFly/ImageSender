@@ -23,6 +23,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIAlertController *alertController;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIAlertView *alertView;
 @property (strong, nonatomic) NSIndexPath *indexPathForCell;
 
 //CoreData
@@ -102,11 +103,14 @@ typedef enum {
         
         if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
             
-            [[[UIAlertView alloc]initWithTitle:nil
+            self.alertView = [[UIAlertView alloc]initWithTitle:nil
                                        message:AS_Alert_Message_Text_For_Empty_Message_Storage
                                       delegate:self
                              cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Ok
-                             otherButtonTitles:nil]show];
+                             otherButtonTitles:nil];
+           
+            [self.alertView show];
+            
                         
         }else {
             
@@ -131,14 +135,15 @@ typedef enum {
         
         if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
             
-            [[[UIAlertView alloc]initWithTitle:nil
+            self.alertView = [[UIAlertView alloc]initWithTitle:nil
                                        message:AS_Alert_Message_Text_For_Remove_All_Messages
                                       delegate:self
                              cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Yes
                              otherButtonTitles:AS_Alert_Action_Text_For_Confirm_No
-              ,nil]show];
+              ,nil];
             
-            self.actionSheet.tag = ASAlertTypeRemoveAll;
+            self.alertView.tag = ASAlertTypeRemoveAll;
+            [self.alertView show];
             
         }else{
             
@@ -244,8 +249,8 @@ typedef enum {
             [[[UIAlertView alloc]initWithTitle:AS_Alert_Action_Text_For_Confirm_No
                                        message:AS_Alert_Message_Text_For_Remove_Certain_Message
                                       delegate:self
-                             cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_No
-                             otherButtonTitles:AS_Alert_Action_Text_For_Confirm_Yes, nil]show];
+                             cancelButtonTitle:AS_Alert_Action_Text_For_Confirm_Yes
+                             otherButtonTitles:AS_Alert_Action_Text_For_Confirm_No, nil]show];
             
             self.actionSheet.tag = ASAlertTypeDeleteCell;
             
@@ -271,8 +276,9 @@ typedef enum {
                                        
                                        [self deleteDefiniteDataObject];
                                    }];
-            [self.alertController addAction:noAction];
+            
             [self.alertController addAction:yesAction];
+            [self.alertController addAction:noAction];
             
             [self presentViewController:self.alertController animated:YES completion:nil];
         }
@@ -286,18 +292,31 @@ typedef enum {
     
     NSString *alertTitle = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if (alertView.tag == ASAlertTypeDeleteCell) {
+    NSLog(@"alet tag = %ld", (long)self.alertView.tag);
+    
+    if (buttonIndex == 0) {
         
-        if ([alertTitle isEqualToString:AS_Alert_Action_Text_For_Confirm_Yes]) {
+        if (alertView.tag == ASAlertTypeDeleteCell) {
             [self deleteDefiniteDataObject];
-            
-    }else if (alertView.tag == ASAlertTypeRemoveAll){
-            
-        if ([alertTitle isEqualToString:AS_Alert_Action_Text_For_Confirm_Yes]) {
-                [self deleteAllDataObjects];
-            }
+        }else if (alertView.tag == ASAlertTypeRemoveAll){
+            [self deleteAllDataObjects];
         }
     }
+    
+   
+    
+//    if (alertView.tag == ASAlertTypeDeleteCell) {
+//        
+//        if ([alertTitle isEqualToString:AS_Alert_Action_Text_For_Confirm_Yes]) {
+//            [self deleteDefiniteDataObject];
+//        }
+//        }else if (alertView.tag == ASAlertTypeRemoveAll){
+//            
+//        if ([alertTitle isEqualToString:AS_Alert_Action_Text_For_Confirm_Yes]) {
+//                [self deleteAllDataObjects];
+//            }
+//        }
+    
 }
 
 
